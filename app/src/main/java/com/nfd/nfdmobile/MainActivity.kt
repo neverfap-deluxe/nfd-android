@@ -1,13 +1,13 @@
 package com.nfd.nfdmobile
 
 import android.os.Bundle
-import android.widget.ListView
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
-import com.nfd.nfdmobile.nfdtext.NFDText
-
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nfd.nfdmobile.fragments.ArticlesFragment
+import com.nfd.nfdmobile.fragments.HomeFragment
+import com.nfd.nfdmobile.fragments.PracticesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,29 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        populateTextList("articles")
-        populateTextList("practices")
-
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-    }
-
-    private fun populateTextList(type: String) {
-        // NOTE: Get View
-        val view = getViewFromType(type)
-
-        // NOTE: Retrieves List Data
-        NFDText.getItemsFromContentAPI(type, view, this)
-    }
-
-    private fun getViewFromType(type: String): ListView {
-        return when (type) {
-            "articles" ->  home_articles_list_view
-            "practices" -> home_practices_list_view
-            else -> {
-                throw Exception("populateTextList $type unknown")
-            }
-        }
     }
 
     private lateinit var textMessage: TextView
@@ -47,18 +26,36 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
                 textMessage.setText(R.string.title_home)
+
+                val homeFragment = HomeFragment.newInstance()
+                openFragment(homeFragment)
+
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                textMessage.setText(R.string.title_dashboard)
+            R.id.navigation_articles -> {
+                textMessage.setText(R.string.title_articles)
+
+                val articlesFragment = ArticlesFragment.newInstance()
+                openFragment(articlesFragment)
+
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
-                textMessage.setText(R.string.title_notifications)
+            R.id.navigation_practices -> {
+                textMessage.setText(R.string.title_practices)
+
+                val practicesFragment = PracticesFragment.newInstance()
+                openFragment(practicesFragment)
+
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
 
+    private fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 }

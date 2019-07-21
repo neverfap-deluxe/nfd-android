@@ -3,10 +3,20 @@ package com.nfd.nfdmobile.nfdtext
 import android.content.Context
 import android.util.Log
 import android.widget.ListView
-import com.nfd.nfdmobile.services.*
+import androidx.room.Room
+import com.nfd.nfdmobile.room.AppDatabase
+import com.nfd.nfdmobile.services.ContentAPIService
+import com.nfd.nfdmobile.services.NFDArticlesData
+import com.nfd.nfdmobile.services.NFDPracticesData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.ClipData.Item
+import com.nfd.nfdmobile.room.TextEntity
+import android.content.ClipData.Item
+
+
+
 
 class NFDText(
     val title: String?,
@@ -14,10 +24,12 @@ class NFDText(
     val content: String?) {
 
     companion object {
-        lateinit var articlesResponse: NFDArticlesData
-        lateinit var practicesResponse: NFDPracticesData
-
         fun getItemsFromContentAPI(type: String, view: ListView, context: Context) {
+
+            val database = Room.databaseBuilder(context, AppDatabase::class.java, "nfd_db")
+                .allowMainThreadQueries()
+                .build()
+
             val service = ContentAPIService.create()
 
             // NOTE: Call Content API
@@ -28,9 +40,12 @@ class NFDText(
                     call.enqueue(object : Callback<NFDArticlesData> {
                         override fun onResponse(call: Call<NFDArticlesData>, response: Response<NFDArticlesData>) {
                             if (response.code() == 200) {
-                                articlesResponse = response.body()!!
-
+                                val articlesResponse = response.body()!!
                                 val retrievedList = convertArticlesListToNFDText(articlesResponse)
+
+                                // NOTE: Populate Database
+                                populateDatabase(database, retrievedList, "article")
+
                                 setupAdapterAndOnClickListener(retrievedList, view, context, type)
                             }
                         }
@@ -45,8 +60,12 @@ class NFDText(
                     call.enqueue(object : Callback<NFDPracticesData> {
                         override fun onResponse(call: Call<NFDPracticesData>, response: Response<NFDPracticesData>) {
                             if (response.code() == 200) {
-                                practicesResponse = response.body()!!
+                                val practicesResponse = response.body()!!
                                 val retrievedList = convertPracticesListToNFDText(practicesResponse)
+
+                                // NOTE: Populate Database
+                                populateDatabase(database, retrievedList, "practice")
+
                                 setupAdapterAndOnClickListener(retrievedList, view, context, type)
                             }
                         }
@@ -59,6 +78,30 @@ class NFDText(
                     throw Exception("contactContentAPI $type unknown")
                 }
             }
+        }
+
+        private fun populateDatabase(database: AppDatabase, retrievedList: ArrayList<NFDText>, type: String) {
+            val textDAO = database.getTextDAO()
+
+            // get all items from the database
+            val databaseTexts = textDAO.getTextsWithType();
+
+            for (retrievedNFDText in retrievedList) {
+
+            }
+
+            textDAO.insert(newText)
+        }
+
+        private fun createTextItem() {
+            val newText = TextEntity()
+
+            newText.setName("Item001")
+            newText.setDate("Item 001")
+            newText.setContent(1000)
+            newText.setType(1000)
+
+            return newText
         }
 
         private fun setupAdapterAndOnClickListener(retrievedList: ArrayList<NFDText>, view: ListView, context: Context, type: String) {
@@ -81,7 +124,7 @@ class NFDText(
 
             articles?.let {
                 for (item in articles.take(5)) {
-                    nfdTextList.add(NFDText(item.title, item.date, item.content))
+                    nfdTextList.add(NFDText(item.title, item.date, item.content, "article"))
                 }
             }
 
@@ -94,7 +137,7 @@ class NFDText(
 
             practices?.let {
                 for (item in practices.take(5)) {
-                    nfdTextList.add(NFDText(item.title, item.date, item.content))
+                    nfdTextList.add(NFDText(item.title, item.date, item.content, "practice"))
                 }
             }
             return nfdTextList

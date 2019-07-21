@@ -9,8 +9,8 @@ class NFDArticlesData {
 
 // Articles
 class NFDArticlesResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -29,8 +29,8 @@ class NFDArticlesResponse {
 }
 
 class ArticleResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -52,8 +52,8 @@ class NFDPracticesData {
 }
 
 class NFDPracticesResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -72,8 +72,8 @@ class NFDPracticesResponse {
 }
 
 class PracticeResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -89,9 +89,14 @@ class PracticeResponse {
 }
 
 // Meditations
+class NFDMeditationsData {
+    @SerializedName("data")
+    var data: NFDMeditationsResponse? = null
+}
+
 class NFDMeditationsResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -110,8 +115,8 @@ class NFDMeditationsResponse {
 }
 
 class MeditationResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -130,9 +135,14 @@ class MeditationResponse {
 }
 
 // Podcasts
+class NFDPodcastsData {
+    @SerializedName("data")
+    var data: NFDPodcastsResponse? = null
+}
+
 class NFDPodcastsResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -151,8 +161,8 @@ class NFDPodcastsResponse {
 }
 
 class PodcastResponse {
-//    @SerializedName("id")
-//    var id: Int = 0
+    @SerializedName("id")
+    var id: String? = null
 
     @SerializedName("title")
     var title: String? = null
