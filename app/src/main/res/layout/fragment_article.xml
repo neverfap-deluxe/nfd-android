@@ -2,6 +2,10 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_margin="20dp"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -10,6 +14,11 @@
             android:id="@+id/fragment_articles_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+
+            tools:listitem="@layout/text_item"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

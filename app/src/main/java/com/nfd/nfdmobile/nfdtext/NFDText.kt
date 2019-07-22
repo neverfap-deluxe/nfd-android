@@ -95,7 +95,9 @@ class NFDText(
             } else {
                 retrievedList.reversed().forEachIndexed { index, element ->
                     // it would be really smart to simply check the date of the latest articles
-                    databaseTexts
+                    databaseTexts.find { databaseText ->
+                        databaseText.title. == element.title
+                    }
                 }
 
             }
