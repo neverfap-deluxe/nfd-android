@@ -16,7 +16,9 @@
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+
             android:text="@string/title_home"
+
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -25,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+
             android:text="NeverFap Deluxe"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+
             android:text="Articles"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,9 +51,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            tools:listitem="@layout/text_item"
+            tools:itemCount="5"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_articles_title" />
+            app:layout_constraintTop_toBottomOf="@id/home_articles_title" app:layout_constraintHorizontal_bias="0.0"/>
 
     <TextView
             android:id="@+id/home_practices_title"
@@ -66,6 +73,9 @@
             android:id="@+id/home_practices_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            tools:listitem="@layout/text_item"
+            tools:itemCount="5"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

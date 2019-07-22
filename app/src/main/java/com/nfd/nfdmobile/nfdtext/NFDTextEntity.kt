@@ -1,4 +1,4 @@
-package com.nfd.nfdmobile.room
+package com.nfd.nfdmobile.nfdtext
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "texts")
 
-class TextEntity {
+class NFDTextEntity {
     @PrimaryKey
     @NonNull
     private val title: String? = null
