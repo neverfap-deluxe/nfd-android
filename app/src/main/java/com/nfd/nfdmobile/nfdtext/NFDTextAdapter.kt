@@ -43,7 +43,6 @@ class NFDTextAdapter(
         return view
     }
 
-
     override fun getCount(): Int {
         return retrievedList.size
     }

@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    def room_version = "2.2.0-alpha01" // 2.1.0 for latest stable version
+    def room_version = "2.1.0"
 
     // NOTES: Room Dependencies
     implementation "androidx.room:room-runtime:$room_version"

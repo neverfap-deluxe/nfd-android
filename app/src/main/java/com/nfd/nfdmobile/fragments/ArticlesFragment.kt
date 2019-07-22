@@ -16,14 +16,6 @@ class ArticlesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_article, container, false)
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        context?.let {
-            NFDText.getItemsFromContentAPI("articles", fragment_articles_list_view, context)
-        }
-    }
-
     companion object {
         fun newInstance(): ArticlesFragment = ArticlesFragment()
     }

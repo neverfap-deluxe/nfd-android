@@ -8,13 +8,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nfd.nfdmobile.fragments.ArticlesFragment
 import com.nfd.nfdmobile.fragments.HomeFragment
 import com.nfd.nfdmobile.fragments.PracticesFragment
+import com.nfd.nfdmobile.nfdtext.NFDText
+
+import kotlinx.android.synthetic.main.fragment_article.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_practice.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = nav_view
+
+        // home
+        NFDText.getItemsFromContentAPI("articles", home_articles_list_view, this)
+        NFDText.getItemsFromContentAPI("practices", home_practices_list_view, this)
+
+//        // articles
+//        NFDText.getItemsFromContentAPI("articles", fragment_articles_list_view, this)
+//
+//        // practices
+//        NFDText.getItemsFromContentAPI("practices", fragment_practices_list_view, this)
 
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)

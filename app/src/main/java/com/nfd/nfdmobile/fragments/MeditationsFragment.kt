@@ -16,14 +16,6 @@ class MeditationsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_practice, container, false)
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        context?.let {
-            NFDText.getItemsFromContentAPI("meditations", fragment_meditations_list_view, context)
-        }
-    }
-
     companion object {
         fun newInstance(): MeditationsFragment = MeditationsFragment()
     }

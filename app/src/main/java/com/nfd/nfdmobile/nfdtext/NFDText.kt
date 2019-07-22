@@ -57,8 +57,8 @@ class NFDText(
                     }
                 }
                 override fun onFailure(call: Call<NFDArticlesData>, t: Throwable) {
-                    val retrievedList = retrieveFromDatabaseNfdText(database, type)
-                    setupAdapterAndOnClickListener(retrievedList, view, context, type)
+                    val completeList = retrieveFromDatabaseNfdText(database, type)
+                    setupAdapterAndOnClickListener(completeList, view, context, type)
                 }
             })
         }
@@ -78,8 +78,8 @@ class NFDText(
                     }
                 }
                 override fun onFailure(call: Call<NFDPracticesData>, t: Throwable) {
-                    val retrievedList = retrieveFromDatabaseNfdText(database, type)
-                    setupAdapterAndOnClickListener(retrievedList, view, context, type)
+                    val completeList = retrieveFromDatabaseNfdText(database, type)
+                    setupAdapterAndOnClickListener(completeList, view, context, type)
                 }
             })
         }
@@ -95,15 +95,12 @@ class NFDText(
                     nfdTextDAO.insert(createTextItem(it.title, it.date, it.content, it.type))
                 }
             } else {
-                // this needs to change
-                var newTextsList: ArrayList<NFDText> = databaseTexts
-
                 for (retrievedText in retrievedList) {
                     val doesTextExist = databaseTexts.find {
                         it.title == retrievedText.title
                     }
                     doesTextExist?.let {
-                        newTextsList.add(retrievedText)
+                        nfdTextDAO.insert(createTextItem(it.title, it.date, it.content, it.type))
                     }
                 }
             }
@@ -111,18 +108,18 @@ class NFDText(
 
         private fun retrieveFromDatabaseNfdText(database: AppDatabase, type: String): ArrayList<NFDText> {
             val nfdTextDAO = database.getTextDAO()
-            return nfdTextDAO.getTextsByType(type)
+            val completeList = nfdTextDAO.getTextsByType(type) as ArrayList<NFDTextEntity>
+            return entityToText(completeList)
+        }
+
+        private fun entityToText(list: ArrayList<NFDTextEntity>): ArrayList<NFDText> {
+            return list.map {
+                NFDText(it.title, it.date, it.content, it.type)
+            } as ArrayList<NFDText>
         }
 
         private fun createTextItem(title: String?, date: String?, content: String?, type: String?): NFDTextEntity {
-            val newText = NFDTextEntity()
-
-            newText.setTitle(title)
-            newText.setDate(date)
-            newText.setContent(content)
-            newText.setType(type)
-
-            return newText
+            return NFDTextEntity(0, title, date, content, type)
         }
 
         private fun setupAdapterAndOnClickListener(retrievedList: ArrayList<NFDText>, view: ListView, context: Context, type: String) {
