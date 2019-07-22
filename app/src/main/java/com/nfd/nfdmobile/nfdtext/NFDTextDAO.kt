@@ -4,7 +4,7 @@ import androidx.room.*
 
 
 @Dao
-interface TextDAO {
+interface NFDTextDAO {
     @Insert
     fun insert(vararg texts: NFDTextEntity)
 

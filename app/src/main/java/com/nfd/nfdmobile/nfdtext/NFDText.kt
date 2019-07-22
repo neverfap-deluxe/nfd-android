@@ -92,16 +92,13 @@ class NFDText(
                 retrievedList.reversed().forEach {
                     textDAO.insert = NFDText(it.title, it.date, it.content, it.type)
                 }
+            } else {
+                retrievedList.reversed().forEachIndexed { index, element ->
+                    // it would be really smart to simply check the date of the latest articles
+                    databaseTexts
+                }
+
             }
-
-            val latestText = databaseTexts[0]
-
-            retrievedList.reversed().forEachIndexed { index, element ->
-                // it would be really smart to simply check the date of the latest articles
-                databaseTexts
-            }
-
-            textDAO.insert(newText)
         }
 
         private fun retrieveFromDatabaseNfdText(database: AppDatabase, type: String) {
