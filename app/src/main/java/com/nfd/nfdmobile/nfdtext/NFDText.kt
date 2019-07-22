@@ -93,6 +93,7 @@ class NFDText(
                     textDAO.insert = NFDText(it.title, it.date, it.content, it.type)
                 }
             } else {
+                // Essentially, check the latest. If the latest does not exist, then
                 retrievedList.reversed().forEachIndexed { index, element ->
                     // it would be really smart to simply check the date of the latest articles
                     databaseTexts.find { databaseText ->
