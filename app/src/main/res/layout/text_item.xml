@@ -3,8 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+
+        android:background="@drawable/text_item_border"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" android:padding="12dp">
 
     <TextView
             android:id="@+id/text_item_title"
@@ -14,7 +18,7 @@
             tools:text="This Is An Article Name"
 
             app:layout_constraintTop_toTopOf="parent"
-    />
+            android:textSize="18sp"/>
 
     <TextView
             android:id="@+id/text_item_date"
@@ -23,6 +27,7 @@
 
             tools:text="@tools:sample/date/ddmmyy"
 
-            app:layout_constraintTop_toBottomOf="@id/text_item_title"/>
+            app:layout_constraintTop_toBottomOf="@id/text_item_title"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
