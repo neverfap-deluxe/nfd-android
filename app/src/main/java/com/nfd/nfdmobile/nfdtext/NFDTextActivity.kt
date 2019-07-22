@@ -3,7 +3,6 @@ package com.nfd.nfdmobile.nfdtext;
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat

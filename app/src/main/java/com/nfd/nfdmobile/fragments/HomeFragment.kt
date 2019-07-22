@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
 
         populateTextList("articles", context)
         populateTextList("practices", context)
-
     }
 
     private fun populateTextList(type: String, context: Context?) {

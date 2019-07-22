@@ -8,24 +8,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.nfdtext.NFDText
-import kotlinx.android.synthetic.main.fragment_article.*
+import kotlinx.android.synthetic.main.fragment_meditation.*
 
 
-class ArticlesFragment : Fragment() {
+class MeditationsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_article, container, false)
+        inflater.inflate(R.layout.fragment_practice, container, false)
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
         context?.let {
-            NFDText.getItemsFromContentAPI("articles", fragment_articles_list_view, context)
+            NFDText.getItemsFromContentAPI("meditations", fragment_meditations_list_view, context)
         }
     }
 
     companion object {
-        fun newInstance(): ArticlesFragment = ArticlesFragment()
+        fun newInstance(): MeditationsFragment = MeditationsFragment()
     }
 }
 

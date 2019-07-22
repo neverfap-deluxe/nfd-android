@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "texts")
-
 class NFDTextEntity {
     @PrimaryKey
     @NonNull
