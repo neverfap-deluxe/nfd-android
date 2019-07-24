@@ -1,19 +1,5 @@
 package com.nfd.nfdmobile.data
 
-import android.content.Context
-import android.widget.ListView
-import androidx.room.Room
-import com.nfd.nfdmobile.AppDatabase
-import com.nfd.nfdmobile.services.ContentAPIService
-import com.nfd.nfdmobile.services.NFDArticlesData
-import com.nfd.nfdmobile.services.NFDPracticesData
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
-package com.nfd.nfdmobile.nfdtext
-
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

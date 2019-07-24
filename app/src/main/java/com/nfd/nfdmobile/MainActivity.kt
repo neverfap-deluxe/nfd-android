@@ -1,18 +1,14 @@
 package com.nfd.nfdmobile
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nfd.nfdmobile.fragments.ArticlesFragment
 import com.nfd.nfdmobile.fragments.HomeFragment
 import com.nfd.nfdmobile.fragments.PracticesFragment
-import com.nfd.nfdmobile.nfdtext.NFDText
 
-import kotlinx.android.synthetic.main.fragment_article.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_practice.*
 
 class MainActivity : AppCompatActivity() {
 

@@ -25,24 +25,7 @@ class NFDArticlesResponse {
     var content: String? = null
 
     @SerializedName("articles")
-    var articles = ArrayList<ArticleResponse>()
-}
-
-class ArticleResponse {
-    @SerializedName("id")
-    var id: String? = null
-
-    @SerializedName("title")
-    var title: String? = null
-
-    @SerializedName("description")
-    var description: String? = null
-
-    @SerializedName("date")
-    var date: String? = null
-
-    @SerializedName("content")
-    var content: String? = null
+    var articles: List<NFDTextResponse>? = null
 }
 
 // Practices
@@ -68,10 +51,10 @@ class NFDPracticesResponse {
     var content: String? = null
 
     @SerializedName("practices")
-    var practices: ArrayList<PracticeResponse>? = null
+    var practices: List<NFDTextResponse>? = null
 }
 
-class PracticeResponse {
+class NFDTextResponse {
     @SerializedName("id")
     var id: String? = null
 
@@ -87,6 +70,7 @@ class PracticeResponse {
     @SerializedName("content")
     var content: String? = null
 }
+
 
 // Meditations
 class NFDMeditationsData {
@@ -111,27 +95,7 @@ class NFDMeditationsResponse {
     var content: String? = null
 
     @SerializedName("meditations")
-    var meditations: ArrayList<MeditationResponse>? = null
-}
-
-class MeditationResponse {
-    @SerializedName("id")
-    var id: String? = null
-
-    @SerializedName("title")
-    var title: String? = null
-
-    @SerializedName("description")
-    var description: String? = null
-
-    @SerializedName("date")
-    var date: String? = null
-
-    @SerializedName("content")
-    var content: String? = null
-
-    @SerializedName("mp3Url")
-    var mp3Url: String? = null
+    var meditations: List<NFDAudioResponse>? = null
 }
 
 // Podcasts
@@ -157,10 +121,10 @@ class NFDPodcastsResponse {
     var content: String? = null
 
     @SerializedName("podcasts")
-    var podcasts: ArrayList<PodcastResponse>? = null
+    var podcasts: List<NFDAudioResponse>? = null
 }
 
-class PodcastResponse {
+class NFDAudioResponse {
     @SerializedName("id")
     var id: String? = null
 

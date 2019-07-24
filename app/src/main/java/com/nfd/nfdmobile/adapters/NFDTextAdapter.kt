@@ -1,16 +1,19 @@
-package com.nfd.nfdmobile.nfdtext
+package com.nfd.nfdmobile.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ListView
 import android.widget.TextView
 import com.nfd.nfdmobile.R
+import com.nfd.nfdmobile.data.NFDText
+import com.nfd.nfdmobile.nfdtext.NFDTextActivity
 
 class NFDTextAdapter(
     private val context: Context,
-    private val retrievedList: ArrayList<NFDText>
+    private val retrievedList: List<NFDText>
     ) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -59,18 +62,25 @@ class NFDTextAdapter(
         lateinit var titleTextView: TextView
         lateinit var dateTextView: TextView
     }
+    companion object {
 
-    fun setupAdapterAndOnClickListener(retrievedList: ArrayList<NFDText>, view: ListView, context: Context, type: String) {
-        // NOTE: Populates Text View
-        val adapter = NFDTextAdapter(context, retrievedList)
-        view.adapter = adapter
+        fun setupAdapterAndOnClickListener(
+            retrievedList: List<NFDText>,
+            view: ListView,
+            context: Context,
+            type: String
+        ) {
+            // NOTE: Populates Text View
+            val adapter = NFDTextAdapter(context, retrievedList)
+            view.adapter = adapter
 
-        // NOTE: Populates Text OnClick
-        view.setOnItemClickListener { _, _, position, _ ->
-            val selectedTextItem = retrievedList[position]
-            val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem, type)
+            // NOTE: Populates Text OnClick
+            view.setOnItemClickListener { _, _, position, _ ->
+                val selectedTextItem = retrievedList[position]
+                val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem, type)
 
-            context.startActivity(textItemIntent)
+                context.startActivity(textItemIntent)
+            }
         }
     }
 }

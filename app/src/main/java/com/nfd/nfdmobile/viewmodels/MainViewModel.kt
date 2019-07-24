@@ -1,3 +1,18 @@
+package com.nfd.nfdmobile.viewmodels
+
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.nfd.nfdmobile.data.AppDatabase
+import com.nfd.nfdmobile.data.NFDText
+import com.nfd.nfdmobile.data.NFDTextDao
+import com.nfd.nfdmobile.services.ContentAPIService
+import com.nfd.nfdmobile.services.NFDArticlesData
+import com.nfd.nfdmobile.services.NFDPracticesData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainViewModel : ViewModel() {
 
@@ -21,20 +36,20 @@ class MainViewModel : ViewModel() {
       return practices
   }
 
-  private fun loadArticles() {
+  private fun loadArticles(context: Context) {
       val type = "article"
       val database = AppDatabase.getInstance(context)
       val nfdTextDao = database.nfdTextDao()
       val existingTexts = nfdTextDao.getTextsByType(type)
 
-      val service = ContentServiceAPI.create()
+      val service = ContentAPIService.create()
 
       service.getArticles().enqueue(object : Callback<NFDArticlesData> {
           override fun onResponse(call: Call<NFDArticlesData>, response: Response<NFDArticlesData>) {
               if (response.code() == 200) {
                   val articlesResponse = response.body()!!
-                  val retrievedList = body.data?.articles
-                  val sortedList = populateDatabase(nfdTextDAO, existingTexts, retrievedList, type)
+                  val retrievedList = articlesResponse.data?.articles
+                  val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
                   articles.setValue(sortedList)
               }
               articles.setValue(existingTexts)
@@ -45,20 +60,20 @@ class MainViewModel : ViewModel() {
       })
   }
 
-  private fun loadPractices() {
+  private fun loadPractices(context: Context) {
       val type = "practice"
       val database = AppDatabase.getInstance(context)
       val nfdTextDao = database.nfdTextDao()
       val existingTexts = nfdTextDao.getTextsByType(type)
 
-      val service = ContentServiceAPI.create()
+      val service = ContentAPIService.create()
 
       service.getPractices().enqueue(object : Callback<NFDPracticesData> {
           override fun onResponse(call: Call<NFDPracticesData>, response: Response<NFDPracticesData>) {
               if (response.code() == 200) {
                   val practicesResponse = response.body()!!
-                  val retrievedList = body.data?.practices
-                  val sortedList = populateDatabase(nfdTextDAO, existingTexts, retrievedList, type)
+                  val retrievedList = practicesResponse.data?.practices
+                  val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
                   practices.setValue(sortedList)
               }
               practices.setValue(existingTexts)
@@ -69,22 +84,25 @@ class MainViewModel : ViewModel() {
       })
   }
 
-  private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDText>, type: String) {
-    var newList: List<NFDText> = existingTexts
+  private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDText>, type: String): List<NFDText> {
+    var newList: ArrayList<NFDText> = existingTexts as ArrayList<NFDText>
     
     if (existingTexts.size === 0) {
         // NOTE: I'm not sure if these need to be reversed.
-        return retrievedList.reversed().forEach {
-            nfdTextDAO.insert(NFDText(0, it.title, it.date, it.content, it.type))
+        retrievedList.reversed().forEach {
+            val newNFDTextItem = NFDText(0, it.title, it.date, it.content, it.type)
+            nfdTextDao.insert(newNFDTextItem)
+            newList.add(newNFDTextItem)
         }
+        return newList
     }
     for (retrievedText in retrievedList) {
         val doesTextExist = existingTexts.find {
             it.title == retrievedText.title
         }
         !doesTextExist?.let {
-            newNFDTextItem = NFDText(0, it.title, it.date, it.content, it.type)
-            nfdTextDAO.insert(newNFDTextItem)
+            val newNFDTextItem = NFDText(0, it.title, it.date, it.content, it.type)
+            nfdTextDao.insert(newNFDTextItem)
             newList.add(newNFDTextItem)
         }
     }

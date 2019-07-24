@@ -1,5 +1,8 @@
 package com.nfd.nfdmobile.data
 
+import android.content.Context
+import com.nfd.nfdmobile.services.ContentAPIService
+
 class NFDTextRepository private constructor(
     private val database: AppDatabase,
     private val service: ContentAPIService,
