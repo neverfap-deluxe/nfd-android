@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.fragment_meditation.*
 class MeditationsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_practice, container, false)
+        view = inflater.inflate(R.layout.fragment_practice, container, false)
+
+        return view
     }
 
     companion object {

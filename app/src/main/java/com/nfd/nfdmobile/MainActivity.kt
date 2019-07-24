@@ -21,19 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = nav_view
 
-        // home
-
-//        // articles
-//        NFDText.getItemsFromContentAPI("articles", fragment_articles_list_view, this)
-//
-//        // practices
-//        NFDText.getItemsFromContentAPI("practices", fragment_practices_list_view, this)
-
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
-
-    supportMapFragment    private lateinit var textMessage: TextView
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

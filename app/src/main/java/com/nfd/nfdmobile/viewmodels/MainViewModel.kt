@@ -1,7 +1,33 @@
 
 class MainViewModel(
-  private val NFDTextRepository: NFDTextRepository,
+  private val nFDTextRepository: NFDTextRepository,
 ) : ViewModel() {
-  val articles: LiveData<List<NFDText>>
-  val practices: LiveData<List<NFDText>
+
+  private val articles: MutableLiveData<List<NFDText>> by lazy {
+      MutableLiveData().also {
+          loadArticles()
+      }
+  }
+
+  private val practices: MutableLiveData<List<NFDText>> by lazy {
+      MutableLiveData().also {
+          loadPractices()
+      }
+  }
+
+  fun getArticles(): LiveData<List<NFDText>> {
+      return articles
+  }
+
+  fun getPractices(): LiveData<List<NFDText>> {
+      return practices
+  }
+
+  private fun loadArticles() {
+      return nFDTextRepository.getArticles()
+  }
+
+  private fun loadPractices() {
+      return nFDTextRepository.getPractices()
+  }
 }

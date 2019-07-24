@@ -12,9 +12,22 @@ import kotlinx.android.synthetic.main.fragment_article.*
 
 
 class ArticlesFragment : Fragment() {
+    private val nFDTextViewModel: NFDTextViewModel by viewModels
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_article, container, false)
+        view = inflater.inflate(R.layout.fragment_article, container, false)
+        context = getActivity()
+        database = AppDatabase.getInstance(context)
+        service = ContentServiceAPI.create()
+        repository = NFDTextRepository(database, service, context)
+        
+        val model = ViewModelProviders.of(this)[MainViewModel::class.java]
+
+        model.getArticles().observe(this, Observer<List<NFDText>>{ articles ->
+          NFDTextAdapter.setupAdapterAndOnClickListener(articles, fragment_articles_list_view, context, "article")
+        })
+
+        return view
     }
 
     companion object {

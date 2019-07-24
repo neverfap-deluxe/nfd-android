@@ -12,19 +12,30 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
+    private val nFDTextViewModel: NFDTextViewModel by viewModels
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         view = inflater.inflate(com.nfd.nfdmobile.R.layout.fragment_home, container, false)
         context = getActivity()
-        nfdTextDao = NFDTextDao()
-        repository = NFDTextRepository()
-        NFDText.getItemsFromContentAPI("articles", home_articles_list_view, this)
-        NFDText.getItemsFromContentAPI("practices", home_practices_list_view, this)
+        database = AppDatabase.getInstance(context)
+        service = ContentServiceAPI.create()
+        repository = NFDTextRepository(database, service, context)
+
+        val model = ViewModelProviders.of(this)[MainViewModel::class.java]
+
+        model.getArticles().observe(this, Observer<List<NFDText>>{ articles ->
+          NFDTextAdapter.setupAdapterAndOnClickListener(articles, home_articles_list_view, context, "article")
+        })
+
+        model.getArticles().observe(this, Observer<List<NFDText>>{ practices ->
+          NFDTextAdapter.setupAdapterAndOnClickListener(practices, home_practices_list_view, context, "practice")
+        })
 
         return view
     }
 
     companion object {
-        fungetItemsFromContentAPI newInstance(): HomeFragment = HomeFragment()
+        fun newInstance(): HomeFragment = HomeFragment()
     }
 }
 
