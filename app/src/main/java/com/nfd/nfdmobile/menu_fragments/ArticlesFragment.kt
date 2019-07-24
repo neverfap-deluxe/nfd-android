@@ -17,14 +17,13 @@ class ArticlesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         view = inflater.inflate(R.layout.fragment_article, container, false)
         context = getActivity()
-        database = AppDatabase.getInstance(context)
-        service = ContentServiceAPI.create()
-        repository = NFDTextRepository(database, service, context)
         
         val model = ViewModelProviders.of(this)[MainViewModel::class.java]
 
-        model.getArticles().observe(this, Observer<List<NFDText>>{ articles ->
-          NFDTextAdapter.setupAdapterAndOnClickListener(articles, fragment_articles_list_view, context, "article")
+        model.getArticles().observe(this, Observer<List<NFDText>> { articles ->
+            override fun onChanged(articles: List<NFDText>) {
+              NFDTextAdapter.setupAdapterAndOnClickListener(articles, fragment_articles_list_view, context, "article")
+            }
         })
 
         return view

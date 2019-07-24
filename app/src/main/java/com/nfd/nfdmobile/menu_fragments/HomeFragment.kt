@@ -17,18 +17,19 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         view = inflater.inflate(com.nfd.nfdmobile.R.layout.fragment_home, container, false)
         context = getActivity()
-        database = AppDatabase.getInstance(context)
-        service = ContentServiceAPI.create()
-        repository = NFDTextRepository(database, service, context)
 
         val model = ViewModelProviders.of(this)[MainViewModel::class.java]
 
         model.getArticles().observe(this, Observer<List<NFDText>>{ articles ->
-          NFDTextAdapter.setupAdapterAndOnClickListener(articles, home_articles_list_view, context, "article")
+            override fun onChanged(articles: List<NFDText>) {
+                NFDTextAdapter.setupAdapterAndOnClickListener(articles, home_articles_list_view, context, "article")
+            }
         })
 
-        model.getArticles().observe(this, Observer<List<NFDText>>{ practices ->
-          NFDTextAdapter.setupAdapterAndOnClickListener(practices, home_practices_list_view, context, "practice")
+        model.getPractices().observe(this, Observer<List<NFDText>>{ practices ->
+            override fun onChanged(practices: List<NFDText>) {
+                NFDTextAdapter.setupAdapterAndOnClickListener(practices, home_practices_list_view, context, "practice")
+            }
         })
 
         return view
