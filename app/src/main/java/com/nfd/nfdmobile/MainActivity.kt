@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = nav_view
 
         // home
-        NFDText.getItemsFromContentAPI("articles", home_articles_list_view, this)
-        NFDText.getItemsFromContentAPI("practices", home_practices_list_view, this)
 
 //        // articles
 //        NFDText.getItemsFromContentAPI("articles", fragment_articles_list_view, this)
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
-    private lateinit var textMessage: TextView
+    supportMapFragment    private lateinit var textMessage: TextView
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

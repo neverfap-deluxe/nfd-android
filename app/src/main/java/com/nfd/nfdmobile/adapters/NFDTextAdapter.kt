@@ -43,6 +43,20 @@ class NFDTextAdapter(
         return view
     }
 
+    fun setupAdapterAndOnClickListener(retrievedList: ArrayList<NFDText>, view: ListView, context: Context, type: String) {
+        // NOTE: Populates Text View
+        val adapter = NFDTextAdapter(context, retrievedList)
+        view.adapter = adapter
+
+        // NOTE: Populates Text OnClick
+        view.setOnItemClickListener { _, _, position, _ ->
+            val selectedTextItem = retrievedList[position]
+            val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem, type)
+
+            context.startActivity(textItemIntent)
+        }
+    }
+
     override fun getCount(): Int {
         return retrievedList.size
     }

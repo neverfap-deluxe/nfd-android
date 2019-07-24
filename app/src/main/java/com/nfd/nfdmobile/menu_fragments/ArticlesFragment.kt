@@ -13,8 +13,9 @@ import kotlinx.android.synthetic.main.fragment_article.*
 
 class ArticlesFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_article, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_article, container, false)
+    }
 
     companion object {
         fun newInstance(): ArticlesFragment = ArticlesFragment()
