@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.fragment_article.*
 
 
 class ArticlesFragment : Fragment() {
-    private val model: MainViewModel by viewModels
+    private val model by viewModel<MainViewModel>()
+    // private val model: MainViewModel by viewModels
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_article, container, false)

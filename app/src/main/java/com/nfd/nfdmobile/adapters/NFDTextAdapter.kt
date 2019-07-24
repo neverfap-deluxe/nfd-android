@@ -62,8 +62,8 @@ class NFDTextAdapter(
         lateinit var titleTextView: TextView
         lateinit var dateTextView: TextView
     }
-    companion object {
 
+    companion object {
         fun setupAdapterAndOnClickListener(
             retrievedList: List<NFDText>,
             view: ListView,

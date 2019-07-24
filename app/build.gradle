@@ -39,6 +39,8 @@ dependencies {
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "androidx.room:room-guava:$room_version"
 
+    implementation "org.koin:koin-android-architecture:0.9.1"
+
     // Normal
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

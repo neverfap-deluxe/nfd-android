@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
-    private val model: MainViewModel by viewModels
+
+    // val model 
+    private val model by viewModel<MainViewModel>()
+    // private val model: MainViewModel by viewModels
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(com.nfd.nfdmobile.R.layout.fragment_home, container, false)
