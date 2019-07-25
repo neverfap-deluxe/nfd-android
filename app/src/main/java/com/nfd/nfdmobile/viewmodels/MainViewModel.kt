@@ -20,13 +20,13 @@ import retrofit2.Response
 class MainViewModel : ViewModel() {
 
   private val articles: MutableLiveData<List<NFDText>> by lazy {
-      MutableLiveData().also {
+      MutableLiveData<List<NFDText>>().also {
           loadArticles()
       }
   }
 
   private val practices: MutableLiveData<List<NFDText>> by lazy {
-      MutableLiveData().also {
+      MutableLiveData<List<NFDText>>().also {
           loadPractices()
       }
   }
