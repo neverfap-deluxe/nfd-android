@@ -25,6 +25,7 @@ android {
 
 dependencies {
     def room_version = "2.1.0"
+    def koin_version = '2.0.1'
 
     // NOTES: Room Dependencies
     implementation "androidx.room:room-runtime:$room_version"
@@ -39,7 +40,14 @@ dependencies {
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "androidx.room:room-guava:$room_version"
 
-    implementation "org.koin:koin-android-architecture:0.9.1"
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Experimental features
+    implementation "org.koin:koin-androidx-ext:$koin_version"
 
     // Normal
     implementation fileTree(dir: 'libs', include: ['*.jar'])

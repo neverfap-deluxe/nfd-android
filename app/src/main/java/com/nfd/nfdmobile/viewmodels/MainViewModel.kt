@@ -14,6 +14,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// https://proandroiddev.com/oversimplified-network-call-using-retrofit-livedata-kotlin-coroutines-and-dsl-512d08eadc16
+
+
 class MainViewModel : ViewModel() {
 
   private val articles: MutableLiveData<List<NFDText>> by lazy {
