@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nfd.nfdmobile.data.AppDatabase
 import com.nfd.nfdmobile.fragments.ArticlesFragment
 import com.nfd.nfdmobile.fragments.HomeFragment
 import com.nfd.nfdmobile.fragments.PracticesFragment
@@ -14,12 +15,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     lateinit var textMessage: TextView
 
+    private val homeFragment = HomeFragment.newInstance()
+    private val articlesFragment = ArticlesFragment.newInstance()
+    private val practicesFragment = PracticesFragment.newInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = nav_view
 
-        val homeFragment = HomeFragment.newInstance()
         openFragment(homeFragment)
 
         textMessage = findViewById(R.id.message)
@@ -31,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 textMessage.setText(R.string.title_home)
 
-                val homeFragment = HomeFragment.newInstance()
                 openFragment(homeFragment)
 
                 return@OnNavigationItemSelectedListener true
@@ -39,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_articles -> {
                 textMessage.setText(R.string.title_articles)
 
-                val articlesFragment = ArticlesFragment.newInstance()
                 openFragment(articlesFragment)
 
                 return@OnNavigationItemSelectedListener true
@@ -47,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_practices -> {
                 textMessage.setText(R.string.title_practices)
 
-                val practicesFragment = PracticesFragment.newInstance()
                 openFragment(practicesFragment)
 
                 return@OnNavigationItemSelectedListener true

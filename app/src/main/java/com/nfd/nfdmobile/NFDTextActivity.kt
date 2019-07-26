@@ -16,7 +16,7 @@ class NFDTextActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_TITLE = "title"
-//        const val EXTRA_DATE = "date"
+       const val EXTRA_DATE = "date"
         const val EXTRA_CONTENT = "content"
 //        const val EXTRA_NFD_TYPE = "nfd_type"
 
@@ -24,7 +24,7 @@ class NFDTextActivity : AppCompatActivity() {
             val detailIntent = Intent(context, NFDTextActivity::class.java)
 
             detailIntent.putExtra(EXTRA_TITLE, text.title)
-//            detailIntent.putExtra(EXTRA_DATE, text.date)
+           detailIntent.putExtra(EXTRA_DATE, text.date)
             detailIntent.putExtra(EXTRA_CONTENT, text.content)
 //            detailIntent.putExtra(EXTRA_NFD_TYPE, textType)
 
@@ -40,12 +40,14 @@ class NFDTextActivity : AppCompatActivity() {
         setContentView(R.layout.activity_text)
 
         val title = intent.extras?.getString(EXTRA_TITLE)
-//        val date = intent.extras?.getString(EXTRA_DATE)
+        val date = intent.extras?.getString(EXTRA_DATE)
         val content = intent.extras?.getString(EXTRA_CONTENT)
 //        val nfdType = intent.extras?.getString(EXTRA_NFD_TYPE)
 
         if (content !== null) {
-            activity_text_view.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            activity_text_view_title.text = title
+            activity_text_view_date.text = date
+            activity_text_view_content.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
 
         setTitle(title)

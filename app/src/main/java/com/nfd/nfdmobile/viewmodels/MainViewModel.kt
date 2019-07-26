@@ -1,6 +1,7 @@
 package com.nfd.nfdmobile.viewmodels
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +27,7 @@ class MainViewModel(val context: Context) : ViewModel() {
     val articles = MutableLiveData<MutableList<NFDText>>()
     val practices = MutableLiveData<MutableList<NFDText>>()
 
-    fun getLatestArticles() {
+    fun getLatestArticles(takeValue: Int) {
         val type = "article"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -35,13 +36,13 @@ class MainViewModel(val context: Context) : ViewModel() {
 
             val retrievedList = nfdTextRepository.getArticles()
             retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
+                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
                 articles.postValue(sortedList)
             }
         }
     }
 
-    fun getLatestPractices() {
+    fun getLatestPractices(takeValue: Int) {
         val type = "practice"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -49,14 +50,15 @@ class MainViewModel(val context: Context) : ViewModel() {
             val existingTexts = nfdTextDao.getTextsByType(type)
 
             val retrievedList = nfdTextRepository.getPractices()
+
             retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
+                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
                 practices.postValue(sortedList)
             }
         }
     }
 
-    private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDTextResponse>, type: String): MutableList<NFDText> {
+    private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDTextResponse>, type: String, takeValue: Int): MutableList<NFDText> {
         var newList: MutableList<NFDText> = existingTexts as MutableList<NFDText>
 
         if (existingTexts.size === 0) {
@@ -66,74 +68,20 @@ class MainViewModel(val context: Context) : ViewModel() {
                 nfdTextDao.insert(newNFDTextItem)
                 newList.add(newNFDTextItem)
             }
-            return newList
+            return newList.take(takeValue) as MutableList<NFDText>
         }
         for (retrievedText in retrievedList) {
             val doesTextExist = existingTexts.find {
                 it.title == retrievedText.title
             }
-            !doesTextExist.let {
-                val newNFDTextItem = NFDText(0, it?.title, it?.date, it?.content, type)
+            if (doesTextExist == null) {
+                val newNFDTextItem = NFDText(0, doesTextExist?.title, doesTextExist?.date, doesTextExist?.content, type)
                 nfdTextDao.insert(newNFDTextItem)
                 newList.add(newNFDTextItem)
             }
         }
-        return newList
+        return newList.take(takeValue) as MutableList<NFDText>
     }
 
     fun cancelRequests() = coroutineContext.cancel()
-//
-//  private fun loadArticles(context: Context): MutableLiveData<Resource<List<NFDText>>>  {
-//      val type = "article"
-//      val service = ContentAPIService.create()
-//
-//      val database = AppDatabase.getInstance(context)
-//      val nfdTextDao = database.nfdTextDao()
-//      val existingTexts = nfdTextDao.getTextsByType(type)
-//
-//      launch {
-//          try {
-//              val articlesResponse = service.getArticles().awaitResult().getOrThrow()
-//
-////          val articlesResponse = response.body()!!
-//              val retrievedList = articlesResponse.data?.articles
-//              retrievedList?.let {
-//                  val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
-//                  articles.setValue(sortedList)
-//              }
-//
-//          }
-//          catch (e: Exception) {
-//              articles.setValue(existingTexts)
-//          }
-//      }
-//  }
-//
-//  private fun loadPractices(context: Context) {
-//      val type = "practice"
-//
-//      val service = ContentAPIService.create()
-//
-//      service.getPractices().enqueue(object : Callback<NFDPracticesData> {
-//          val database = AppDatabase.getInstance(context)
-//          val nfdTextDao = database.nfdTextDao()
-//          val existingTexts = nfdTextDao.getTextsByType(type)
-//
-//          override fun onResponse(call: Call<NFDPracticesData>, response: Response<NFDPracticesData>) {
-//              if (response.code() == 200) {
-//                  val practicesResponse = response.body()!!
-//                  val retrievedList = practicesResponse.data?.practices
-//                  retrievedList?.let {
-//                      val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
-//                      practices.setValue(sortedList)
-//                  }
-//              }
-//              practices.setValue(existingTexts)
-//          }
-//          override fun onFailure(call: Call<NFDPracticesData>, t: Throwable) {
-//            practices.setValue(existingTexts)
-//          }
-//      })
-//  }
-
 }
