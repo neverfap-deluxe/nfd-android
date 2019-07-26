@@ -9,7 +9,7 @@ import com.nfd.nfdmobile.fragments.ArticlesFragment
 import com.nfd.nfdmobile.fragments.HomeFragment
 import com.nfd.nfdmobile.fragments.PracticesFragment
 
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var textMessage: TextView
@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = nav_view
+
+        val homeFragment = HomeFragment.newInstance()
+        openFragment(homeFragment)
 
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)

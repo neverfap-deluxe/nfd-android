@@ -7,6 +7,7 @@ import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.nfd.nfdmobile.R
+import com.nfd.nfdmobile.data.NFDText
 
 import kotlinx.android.synthetic.main.activity_text.*
 

@@ -9,7 +9,7 @@ class NFDArticlesData {
 
 // Articles
 class NFDArticlesResponse {
-    @SerializedName("id")
+
     var id: String? = null
 
     @SerializedName("title")
