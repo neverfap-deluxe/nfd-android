@@ -7,6 +7,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <!-- Add my own font -->
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+
+        <!--Style for Splash Screen-->
+        <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+            <item name ="android:windowBackground"> @drawable/splash_screen_background</item>
+        </style>
+
     </style>
 
 </resources>

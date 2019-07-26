@@ -12,9 +12,9 @@ interface  ContentAPIInterface {
     @GET("content_practices/index.json")
     fun getPractices() : Deferred<Response<NFDPracticesData>>
 
-//    @GET("content_meditations/index.json")
-//    fun getPodcasts() : Deferred<Response<NFDPodcastsResponse>>
-//
-//    @GET("content_podcasts/index.json")
-//    fun getMeditations() : Deferred<Response<NFDMeditationsResponse>>
+    @GET("content_meditations/index.json")
+    fun getPodcasts() : Deferred<Response<NFDPodcastsData>>
+
+    @GET("content_podcasts/index.json")
+    fun getMeditations() : Deferred<Response<NFDMeditationsData>>
 }

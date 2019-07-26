@@ -11,12 +11,15 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.nfd.nfdmobile"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -56,8 +59,15 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version" // For Kotlin use kapt instead of annotationProcessor
 
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
+    annotationProcessor 'androidx.room:room-compiler:2.0.0'
+    kapt 'androidx.room:room-compiler:2.0.0'
+
+    // Exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.3'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.3'
+    implementation 'androidx.core:core:1.0.0'
+    implementation 'androidx.media:media:1.0.0'
+
 
     // Normal
     implementation fileTree(dir: 'libs', include: ['*.jar'])

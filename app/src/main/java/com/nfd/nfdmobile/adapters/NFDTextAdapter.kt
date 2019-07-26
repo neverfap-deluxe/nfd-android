@@ -77,7 +77,7 @@ class NFDTextAdapter(
             // NOTE: Populates Text OnClick
             view.setOnItemClickListener { _, _, position, _ ->
                 val selectedTextItem = retrievedList[position]
-                val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem, type)
+                val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem) // type
 
                 context.startActivity(textItemIntent)
             }

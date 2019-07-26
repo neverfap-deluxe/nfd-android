@@ -16,11 +16,13 @@
             android:id="@+id/app_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="32dp"
 
             android:text="NeverFap Deluxe"
-            android:textSize="24sp"
+            android:textSize="50sp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

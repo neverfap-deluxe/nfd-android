@@ -22,10 +22,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val context = context
 
-//        context?.let {
-//            prePopulateViewData(context)
-//        }
-
         model.getLatestArticles(5)
         model.getLatestPractices(5)
 
@@ -41,19 +37,6 @@ class HomeFragment : Fragment() {
 
         return view
     }
-
-//    private fun prePopulateViewData(context: Context) {
-//        val database = AppDatabase.getInstance(context)
-//        val nfdTextDao = database.nfdTextDao()
-//        val articles = nfdTextDao.getTextsByType("article")
-//        val practices = nfdTextDao.getTextsByType("practice")
-//        articles.forEach {
-//            NFDTextAdapter.setupAdapterAndOnClickListener(articles, home_articles_list_view, context, "article")
-//        }
-//        practices.forEach {
-//            NFDTextAdapter.setupAdapterAndOnClickListener(practices, home_practices_list_view, context, "practice")
-//        }
-//    }
 
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()

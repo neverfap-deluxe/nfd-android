@@ -4,25 +4,25 @@ import com.nfd.nfdmobile.services.ContentAPIInterface
 import com.nfd.nfdmobile.services.NFDAudioResponse
 import com.nfd.nfdmobile.services.NFDTextResponse
 
-class NFDTextRepository(
+class NFDAudioRepository(
     private val contentApiInterface: ContentAPIInterface
 ) : BaseRepository() {
 
-    suspend fun getArticles() : MutableList<NFDTextResponse>?{
+    suspend fun getMeditations() : MutableList<NFDAudioResponse>?{
         return safeApiCall(
             //await the result of deferred type
-            call = {contentApiInterface.getArticles().await()},
+            call = {contentApiInterface.getMeditations().await()},
             error = "Error fetching news"
             //convert to mutable list
-        )?.data?.articles?.toMutableList()
+        )?.data?.meditations?.toMutableList()
     }
 
-    suspend fun getPractices() : MutableList<NFDTextResponse>?{
+    suspend fun getPodcasts() : MutableList<NFDAudioResponse>?{
         return safeApiCall(
             //await the result of deferred type
-            call = {contentApiInterface.getPractices().await()},
+            call = {contentApiInterface.getPodcasts().await()},
             error = "Error fetching news"
             //convert to mutable list
-        )?.data?.practices?.toMutableList()
+        )?.data?.podcasts?.toMutableList()
     }
 }
