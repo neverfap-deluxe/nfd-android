@@ -1,8 +1,6 @@
 package com.nfd.nfdmobile
 
-import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
-import android.R
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 

@@ -9,7 +9,7 @@ import android.widget.ListView
 import android.widget.TextView
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.data.NFDText
-import com.nfd.nfdmobile.nfdtext.NFDTextActivity
+import com.nfd.nfdmobile.NFDTextActivity
 
 class NFDTextAdapter(
     private val context: Context,

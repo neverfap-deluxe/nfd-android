@@ -8,14 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!-- Add my own font -->
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="fontFamily">@font/lato</item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+        <!--<item name="android:fontFamily">@font/lato</item>-->
+        <!--<item name="fontFamily">@font/lato</item> &lt;!&ndash; target android sdk versions < 26 and > 14 if theme other than AppCompat &ndash;&gt;-->
+    </style>
 
-        <!--Style for Splash Screen-->
-        <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-            <item name ="android:windowBackground"> @drawable/splash_screen_background</item>
-        </style>
-
+    <!--Style for Splash Screen-->
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
     </style>
 
 </resources>

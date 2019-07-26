@@ -9,7 +9,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".nfdtext.NFDAudioActivity">
+            tools:context=".NFDAudioActivity">
 
         <TextView
                 android:id="@+id/activity_audio_view_title"
