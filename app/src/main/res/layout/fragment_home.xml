@@ -39,17 +39,16 @@
 
                 android:text="Latest Articles"
                 android:textSize="20sp"
+				android:textColor="#fff"
+				android:background="@drawable/home_sub_title_style"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <ListView
                     android:id="@+id/home_articles_list_view"
                     android:layout_width="match_parent"
 					android:layout_height="350dp"
-
-                    android:layout_marginTop="16dp"
 
                     android:divider="@android:color/transparent"
                     android:dividerHeight="10dp"
@@ -72,17 +71,16 @@
 
                 android:text="Latest Practices"
                 android:textSize="20sp"
+				android:textColor="#fff"
+				android:background="@drawable/home_sub_title_style"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_articles_list_view"/>
 
         <ListView
                 android:id="@+id/home_practices_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-
-                android:layout_marginTop="16dp"
 
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10dp"
@@ -91,7 +89,6 @@
                 tools:itemCount="2"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_practices_title" />
 
 
@@ -104,6 +101,8 @@
 
 				android:text="Latest Meditations"
 				android:textSize="20sp"
+				android:textColor="#fff"
+				android:background="@drawable/home_sub_title_style"
 
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -114,8 +113,6 @@
 				android:layout_width="match_parent"
 				android:layout_height="350dp"
 
-				android:layout_marginTop="16dp"
-
 				android:divider="@android:color/transparent"
 				android:dividerHeight="10dp"
 
@@ -123,7 +120,6 @@
 				tools:itemCount="2"
 
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/home_meditations_title" />
 
 

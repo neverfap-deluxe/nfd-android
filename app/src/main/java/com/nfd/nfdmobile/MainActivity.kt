@@ -1,6 +1,5 @@
 package com.nfd.nfdmobile
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +11,7 @@ import com.nfd.nfdmobile.fragments.*
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.Menu
-import android.view.View
+import com.nfd.nfdmobile.utilities.Helpers
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,8 +27,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.activity_toolbar))
+        Helpers.hideStatusBar(window, actionBar)
 
         openFragment(homeFragment)
 

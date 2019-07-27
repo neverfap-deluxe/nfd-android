@@ -8,5 +8,5 @@ interface NFDTextDao {
     fun insert(vararg texts: NFDText)
 
     @Query("SELECT * FROM texts WHERE type = :type")
-    fun getTextsByType(type: String?): List<NFDText>
+    fun getTextsByType(type: String?): MutableList<NFDText>
 }

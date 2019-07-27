@@ -5,10 +5,26 @@
         xmlns:tools="http://schemas.android.com/tools"
 
         android:layout_margin="@dimen/view_layout_margin"
+        android:gravity="right"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/home_articles_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+
+            android:text="Latest Articles"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:background="@drawable/home_sub_title_style"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <ListView
             android:id="@+id/fragment_articles_list_view"

@@ -7,7 +7,23 @@
 
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:gravity="right"
               android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/home_articles_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+
+            android:text="Latest Podcasts"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:background="@drawable/home_sub_title_style"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:gravity="end"/>
 
     <ListView
             android:id="@+id/fragment_podcasts_list_view"
@@ -21,6 +37,6 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="parent"/>
 
 </LinearLayout>

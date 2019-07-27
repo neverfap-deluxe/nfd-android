@@ -8,5 +8,5 @@ interface NFDAudioDao {
     fun insert(vararg audios: NFDAudio)
 
     @Query("SELECT * FROM audios WHERE type = :type")
-    fun getAudiosByType(type: String?): List<NFDAudio>
+    fun getAudiosByType(type: String?): MutableList<NFDAudio>
 }

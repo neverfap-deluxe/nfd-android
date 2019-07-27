@@ -1,6 +1,7 @@
 package com.nfd.nfdmobile.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.adapters.NFDAudioAdapter
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
 import com.nfd.nfdmobile.viewmodels.MainViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_article.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +23,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val context = context
+        val toolbar = activity_toolbar
 
+//        toolbar.visibility = View.GONE
         model.getLatestArticles()
         model.getLatestPractices()
         model.getLatestMeditations()

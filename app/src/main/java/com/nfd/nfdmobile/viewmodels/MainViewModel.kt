@@ -9,6 +9,7 @@ import com.nfd.nfdmobile.data.*
 import com.nfd.nfdmobile.services.ContentAPIService
 import com.nfd.nfdmobile.services.NFDAudioResponse
 import com.nfd.nfdmobile.services.NFDTextResponse
+import com.nfd.nfdmobile.utilities.Helpers
 import kotlinx.coroutines.*
 import java.io.File
 import kotlin.coroutines.CoroutineContext
@@ -36,10 +37,14 @@ class MainViewModel(val context: Context) : ViewModel() {
             val nfdTextDao = database.nfdTextDao()
             val existingTexts = nfdTextDao.getTextsByType(type)
 
-            val retrievedList = nfdTextRepository.getArticles()
-            retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
-                articles.postValue(sortedList)
+            if (Helpers.isNetworkAvailable(context)) {
+                val retrievedList = nfdTextRepository.getArticles()
+                retrievedList?.let {
+                    val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
+                    articles.postValue(sortedList)
+                }
+            } else {
+                articles.postValue(existingTexts)
             }
         }
     }
@@ -51,11 +56,15 @@ class MainViewModel(val context: Context) : ViewModel() {
             val nfdTextDao = database.nfdTextDao()
             val existingTexts = nfdTextDao.getTextsByType(type)
 
-            val retrievedList = nfdTextRepository.getPractices()
+            if (Helpers.isNetworkAvailable(context)) {
+                val retrievedList = nfdTextRepository.getPractices()
 
-            retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
-                practices.postValue(sortedList)
+                retrievedList?.let {
+                    val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
+                    practices.postValue(sortedList)
+                }
+            } else {
+                practices.postValue(existingTexts)
             }
         }
     }
@@ -67,10 +76,14 @@ class MainViewModel(val context: Context) : ViewModel() {
             val nfdAudioDao = database.nfdAudioDao()
             val existingTexts = nfdAudioDao.getAudiosByType(type)
 
-            val retrievedList = nfdAudioRepository.getMeditations()
-            retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
-                meditations.postValue(sortedList)
+            if (Helpers.isNetworkAvailable(context)) {
+                val retrievedList = nfdAudioRepository.getMeditations()
+                retrievedList?.let {
+                    val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
+                    meditations.postValue(sortedList)
+                }
+            } else {
+                meditations.postValue(existingTexts)
             }
         }
     }
@@ -82,10 +95,14 @@ class MainViewModel(val context: Context) : ViewModel() {
             val nfdAudioDao = database.nfdAudioDao()
             val existingTexts = nfdAudioDao.getAudiosByType(type)
 
-            val retrievedList = nfdAudioRepository.getPodcasts()
-            retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
-                podcasts.postValue(sortedList)
+            if (Helpers.isNetworkAvailable(context)) {
+                val retrievedList = nfdAudioRepository.getPodcasts()
+                retrievedList?.let {
+                    val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
+                    podcasts.postValue(sortedList)
+                }
+            } else {
+                podcasts.postValue(existingTexts)
             }
         }
     }
