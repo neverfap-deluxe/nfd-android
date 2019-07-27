@@ -10,7 +10,8 @@
 
             tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -20,9 +21,6 @@
                 android:layout_height="wrap_content"
 
                 android:text="About NeverFap Deluxe"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/fragment_about_text"
 
                 android:textSize="50sp"
                 android:paddingTop="24dp"
@@ -35,12 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:text="NeverFap Deluxe is a porn addiciton recovery platform"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
 
+                android:text="NeverFap Deluxe is a porn addiciton recovery platform"
         />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

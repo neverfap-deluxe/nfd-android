@@ -11,7 +11,6 @@ import com.nfd.nfdmobile.fragments.*
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.Menu
-import com.nfd.nfdmobile.utilities.Helpers
 import android.content.Intent
 import android.net.Uri
 

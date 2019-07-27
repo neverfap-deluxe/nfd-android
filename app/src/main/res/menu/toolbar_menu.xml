@@ -7,6 +7,7 @@
 	<item
 			android:id="@+id/action_more"
 			android:icon="@drawable/ic_more_vert_white_24dp"
+			android:orderInCategory="100"
 			android:title=""
 			app:showAsAction="always">
 		<menu>
@@ -33,7 +34,6 @@
 
 	<item
 			android:id="@+id/action_refresh"
-			android:orderInCategory="100"
 			android:icon="@drawable/ic_refresh_white_24dp"
 			app:showAsAction="always"
 			android:title="Refresh"/>
