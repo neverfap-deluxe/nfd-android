@@ -5,8 +5,10 @@
     <string name="title_articles">Articles</string>
     <string name="title_practices">Practices</string>
     <string name="title_meditations">Meditations</string>
-    <string name="title_podcasts">Podcasts</string>
+
     <string name="title_about">About</string>
+    <string name="title_website">Website</string>
+    <string name="title_podcasts">Podcasts</string>
 
     <string name="content_api_url">https://netlify.neverfapdeluxe.com/</string>
 </resources>

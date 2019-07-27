@@ -1,8 +1,6 @@
 package com.nfd.nfdmobile.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +20,7 @@ class ArticlesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_article, container, false)
         val context = context
 
-        model.getLatestArticles(500)
+        model.getLatestArticles()
 
         context?.let {
             model.articles.observe(this, Observer { articles ->

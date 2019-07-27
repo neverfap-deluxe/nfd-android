@@ -2,19 +2,20 @@ package com.nfd.nfdmobile
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.nfd.nfdmobile.data.AppDatabase
 
 import kotlinx.android.synthetic.main.activity_main.*
-import androidx.core.app.NavUtils
 import com.nfd.nfdmobile.fragments.*
+import com.nfd.nfdmobile.viewmodels.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.view.Menu
 
 
 class MainActivity : AppCompatActivity() {
 //    lateinit var textMessage: TextView
+    private val model: MainViewModel by viewModel()
 
     private val homeFragment = HomeFragment.newInstance()
     private val articlesFragment = ArticlesFragment.newInstance()
@@ -22,29 +23,43 @@ class MainActivity : AppCompatActivity() {
     private val meditationsFragment = MeditationsFragment.newInstance()
     private val podcastsFragment = PodcastsFragment.newInstance()
 
+    private val aboutFragment = AboutFragment.newInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = nav_view
+        setSupportActionBar(findViewById(R.id.activity_toolbar))
 
         openFragment(homeFragment)
 
-        val ab = actionBar
-        ab?.setDisplayHomeAsUpEnabled(true)
-        ab?.title = "NeverFap Deluxe"
-        ab?.subtitle = ""
-
-//        textMessage = findViewById(R.id.message)
+        val navView: BottomNavigationView = nav_view
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
-            android.R.id.home -> {
-                NavUtils.navigateUpFromSameTask(this)
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_refresh -> {
+            model.getLatestArticles()
+            model.getLatestPractices()
+            model.getLatestMeditations()
+            model.getLatestPodcasts()
+            true
+        }
+
+        R.id.action_more -> {
+            openFragment(aboutFragment)
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
         }
     }
 

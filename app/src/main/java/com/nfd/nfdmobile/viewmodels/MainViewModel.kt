@@ -28,7 +28,7 @@ class MainViewModel(val context: Context) : ViewModel() {
     val meditations = MutableLiveData<MutableList<NFDText>>()
     val podcasts = MutableLiveData<MutableList<NFDText>>()
 
-    fun getLatestArticles(takeValue: Int) {
+    fun getLatestArticles() {
         val type = "article"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -37,13 +37,13 @@ class MainViewModel(val context: Context) : ViewModel() {
 
             val retrievedList = nfdTextRepository.getArticles()
             retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
+                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
                 articles.postValue(sortedList)
             }
         }
     }
 
-    fun getLatestPractices(takeValue: Int) {
+    fun getLatestPractices() {
         val type = "practice"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -53,13 +53,13 @@ class MainViewModel(val context: Context) : ViewModel() {
             val retrievedList = nfdTextRepository.getPractices()
 
             retrievedList?.let {
-                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
+                val sortedList = populateDatabase(nfdTextDao, existingTexts, retrievedList, type)
                 practices.postValue(sortedList)
             }
         }
     }
 
-    fun getLatestMeditations(takeValue: Int) {
+    fun getLatestMeditations() {
         val type = "meditation"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -68,13 +68,13 @@ class MainViewModel(val context: Context) : ViewModel() {
 
             val retrievedList = nfdAudioRepository.getMeditations()
             retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
+                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type)
                 articles.postValue(sortedList)
             }
         }
     }
 
-    fun getLatestPodcasts(takeValue: Int) {
+    fun getLatestPodcasts() {
         val type = "podcast"
         scope.launch {
             val database = AppDatabase.getInstance(context)
@@ -83,13 +83,13 @@ class MainViewModel(val context: Context) : ViewModel() {
 
             val retrievedList = nfdAudioRepository.getPodcasts()
             retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type, takeValue)
+                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type)
                 articles.postValue(sortedList)
             }
         }
     }
 
-    private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDTextResponse>, type: String, takeValue: Int): MutableList<NFDText> {
+    private fun populateDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDTextResponse>, type: String): MutableList<NFDText> {
         var newList: MutableList<NFDText> = existingTexts as MutableList<NFDText>
 
         if (existingTexts.size === 0) {
@@ -99,7 +99,7 @@ class MainViewModel(val context: Context) : ViewModel() {
                 nfdTextDao.insert(newNFDTextItem)
                 newList.add(newNFDTextItem)
             }
-            return newList.take(takeValue) as MutableList<NFDText>
+            return newList as MutableList<NFDText>
         }
         for (retrievedText in retrievedList) {
             val doesTextExist = existingTexts.find {
@@ -111,10 +111,10 @@ class MainViewModel(val context: Context) : ViewModel() {
                 newList.add(newNFDTextItem)
             }
         }
-        return newList.take(takeValue) as MutableList<NFDText>
+        return newList as MutableList<NFDText>
     }
 
-    private fun populateAudioDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDAudioResponse>, type: String, takeValue: Int): MutableList<NFDText> {
+    private fun populateAudioDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDAudioResponse>, type: String): MutableList<NFDText> {
         var newList: MutableList<NFDText> = existingTexts as MutableList<NFDText>
 
         if (existingTexts.size === 0) {
@@ -124,7 +124,7 @@ class MainViewModel(val context: Context) : ViewModel() {
                 nfdTextDao.insert(newNFDTextItem)
                 newList.add(newNFDTextItem)
             }
-            return newList.take(takeValue) as MutableList<NFDText>
+            return newList as MutableList<NFDText>
         }
         for (retrievedText in retrievedList) {
             val doesTextExist = existingTexts.find {
@@ -136,7 +136,7 @@ class MainViewModel(val context: Context) : ViewModel() {
                 newList.add(newNFDTextItem)
             }
         }
-        return newList.take(takeValue) as MutableList<NFDText>
+        return newList as MutableList<NFDText>
     }
 
 

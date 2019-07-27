@@ -74,6 +74,10 @@ class NFDTextAdapter(
             val adapter = NFDTextAdapter(context, retrievedList)
             view.adapter = adapter
 
+//            val lp = view.layoutParams
+//            lp.height = retrievedList.size * 300
+//            view.layoutParams = lp
+
             // NOTE: Populates Text OnClick
             view.setOnItemClickListener { _, _, position, _ ->
                 val selectedTextItem = retrievedList[position]

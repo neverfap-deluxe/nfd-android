@@ -1,6 +1,5 @@
 package com.nfd.nfdmobile.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
-import com.nfd.nfdmobile.data.AppDatabase
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,16 +20,16 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val context = context
 
-        model.getLatestArticles(5)
-        model.getLatestPractices(5)
+        model.getLatestArticles()
+        model.getLatestPractices()
 
         context?.let {
             model.articles.observe(this, Observer { articles ->
-                NFDTextAdapter.setupAdapterAndOnClickListener(articles, home_articles_list_view, context, "article")
+                NFDTextAdapter.setupAdapterAndOnClickListener(articles.take(4), home_articles_list_view, context, "article")
             })
 
             model.practices.observe(this, Observer { practices ->
-                NFDTextAdapter.setupAdapterAndOnClickListener(practices, home_practices_list_view, context, "practice")
+                NFDTextAdapter.setupAdapterAndOnClickListener(practices.take(4), home_practices_list_view, context, "practice")
             })
         }
 

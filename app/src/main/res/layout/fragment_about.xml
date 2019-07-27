@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:layout_margin="@dimen/view_layout_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/fragment_about_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="About NeverFap Deluxe"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_about_text"
+
+                android:textSize="50sp"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:lineSpacingExtra="6sp"
+        />
+
+        <TextView
+                android:id="@+id/fragment_about_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="NeverFap Deluxe is a porn addiciton recovery platform"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -24,11 +24,8 @@ class NFDAudioActivity : AppCompatActivity() {
 
         // NOTE so here it needs to check the type, it it exists then set a different view.
         setContentView(R.layout.activity_text)
-
-        val ab = actionBar
-        ab?.setDisplayHomeAsUpEnabled(true)
-//        ab?.title = ""
-//        ab?.subtitle = ""
+        setSupportActionBar(findViewById(R.id.activity_toolbar))
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         val title = intent.extras?.getString(EXTRA_TITLE)
         val date = intent.extras?.getString(EXTRA_DATE)
