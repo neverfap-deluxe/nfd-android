@@ -12,6 +12,8 @@ import com.nfd.nfdmobile.viewmodels.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.Menu
 import com.nfd.nfdmobile.utilities.Helpers
+import android.content.Intent
+import android.net.Uri
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.activity_toolbar))
-        Helpers.hideStatusBar(window, actionBar)
+//        Helpers.hideStatusBar(window, actionBar)
 
         openFragment(homeFragment)
 
@@ -56,8 +58,19 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        R.id.action_more -> {
+        R.id.navigation_about -> {
             openFragment(aboutFragment)
+            true
+        }
+
+        R.id.navigation_website -> {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://neverfapdeluxe.com/"))
+            startActivity(browserIntent)
+            true
+        }
+
+        R.id.navigation_podcasts -> {
+            openFragment(podcastsFragment)
             true
         }
 

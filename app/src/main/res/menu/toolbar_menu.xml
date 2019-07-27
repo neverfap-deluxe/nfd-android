@@ -3,17 +3,39 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 >
+
+	<item
+			android:id="@+id/action_more"
+			android:icon="@drawable/ic_more_vert_white_24dp"
+			android:title=""
+			app:showAsAction="always">
+		<menu>
+			<item
+					android:id="@+id/navigation_about"
+					android:icon="@drawable/ic_announcement_black_24dp"
+					android:title="@string/title_about"
+					app:showAsAction="ifRoom"/>
+
+			<item
+					android:id="@+id/navigation_website"
+					android:icon="@drawable/ic_bookmark_black_24dp"
+					android:title="@string/title_website"
+					app:showAsAction="ifRoom"/>
+
+			<item
+					android:id="@+id/navigation_podcasts"
+					android:icon="@drawable/ic_rss_feed_black_24dp"
+					android:title="@string/title_podcasts"
+					app:showAsAction="ifRoom"/>
+		</menu>
+
+	</item>
+
 	<item
 			android:id="@+id/action_refresh"
 			android:orderInCategory="100"
 			android:icon="@drawable/ic_refresh_white_24dp"
 			app:showAsAction="always"
 			android:title="Refresh"/>
-
-	<item
-			android:id="@+id/action_more"
-			android:icon="@drawable/ic_more_vert_white_24dp"
-			android:title="More"
-			app:showAsAction="never"/>
 
 </menu>
