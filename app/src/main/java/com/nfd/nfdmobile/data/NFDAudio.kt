@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "texts")
+@Entity(tableName = "audios")
 data class NFDAudio(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "title") val title: String?,

@@ -25,8 +25,8 @@ class MainViewModel(val context: Context) : ViewModel() {
 
     val articles = MutableLiveData<MutableList<NFDText>>()
     val practices = MutableLiveData<MutableList<NFDText>>()
-    val meditations = MutableLiveData<MutableList<NFDText>>()
-    val podcasts = MutableLiveData<MutableList<NFDText>>()
+    val meditations = MutableLiveData<MutableList<NFDAudio>>()
+    val podcasts = MutableLiveData<MutableList<NFDAudio>>()
 
     fun getLatestArticles() {
         val type = "article"
@@ -63,13 +63,13 @@ class MainViewModel(val context: Context) : ViewModel() {
         val type = "meditation"
         scope.launch {
             val database = AppDatabase.getInstance(context)
-            val nfdTextDao = database.nfdTextDao()
-            val existingTexts = nfdTextDao.getTextsByType(type)
+            val nfdAudioDao = database.nfdAudioDao()
+            val existingTexts = nfdAudioDao.getAudiosByType(type)
 
             val retrievedList = nfdAudioRepository.getMeditations()
             retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type)
-                articles.postValue(sortedList)
+                val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
+                meditations.postValue(sortedList)
             }
         }
     }
@@ -78,13 +78,13 @@ class MainViewModel(val context: Context) : ViewModel() {
         val type = "podcast"
         scope.launch {
             val database = AppDatabase.getInstance(context)
-            val nfdTextDao = database.nfdTextDao()
-            val existingTexts = nfdTextDao.getTextsByType(type)
+            val nfdAudioDao = database.nfdAudioDao()
+            val existingTexts = nfdAudioDao.getAudiosByType(type)
 
             val retrievedList = nfdAudioRepository.getPodcasts()
             retrievedList?.let {
-                val sortedList = populateAudioDatabase(nfdTextDao, existingTexts, retrievedList, type)
-                articles.postValue(sortedList)
+                val sortedList = populateAudioDatabase(nfdAudioDao, existingTexts, retrievedList, type)
+                podcasts.postValue(sortedList)
             }
         }
     }
@@ -114,29 +114,29 @@ class MainViewModel(val context: Context) : ViewModel() {
         return newList as MutableList<NFDText>
     }
 
-    private fun populateAudioDatabase(nfdTextDao: NFDTextDao, existingTexts: List<NFDText>, retrievedList: List<NFDAudioResponse>, type: String): MutableList<NFDText> {
-        var newList: MutableList<NFDText> = existingTexts as MutableList<NFDText>
+    private fun populateAudioDatabase(nfdAudioDao: NFDAudioDao, existingTexts: List<NFDAudio>, retrievedList: List<NFDAudioResponse>, type: String): MutableList<NFDAudio> {
+        var newList: MutableList<NFDAudio> = existingTexts as MutableList<NFDAudio>
 
         if (existingTexts.size === 0) {
             // NOTE: I'm not sure if these need to be reversed.
             retrievedList.reversed().forEach {
-                val newNFDTextItem = NFDText(0, it.title, it.date, it.content, type)
-                nfdTextDao.insert(newNFDTextItem)
-                newList.add(newNFDTextItem)
+                val newNFDAudioItem = NFDAudio(0, it.title, it.date, it.content, it.mp3Url, type)
+                nfdAudioDao.insert(newNFDAudioItem)
+                newList.add(newNFDAudioItem)
             }
-            return newList as MutableList<NFDText>
+            return newList as MutableList<NFDAudio>
         }
         for (retrievedText in retrievedList) {
             val doesTextExist = existingTexts.find {
                 it.title == retrievedText.title
             }
             if (doesTextExist == null) {
-                val newNFDTextItem = NFDText(0, doesTextExist?.title, doesTextExist?.date, doesTextExist?.content, type)
-                nfdTextDao.insert(newNFDTextItem)
-                newList.add(newNFDTextItem)
+                val newNFDAudioItem = NFDAudio(0, doesTextExist?.title, doesTextExist?.date, doesTextExist?.content, doesTextExist?.mp3Url, type)
+                nfdAudioDao.insert(newNFDAudioItem)
+                newList.add(newNFDAudioItem)
             }
         }
-        return newList as MutableList<NFDText>
+        return newList as MutableList<NFDAudio>
     }
 
 

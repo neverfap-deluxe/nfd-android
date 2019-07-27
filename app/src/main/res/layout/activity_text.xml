@@ -9,7 +9,6 @@
 
             tools:context=".MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_margin="@dimen/view_layout_margin"
             android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.nfd.nfdmobile.R
+import com.nfd.nfdmobile.adapters.NFDAudioAdapter
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -22,6 +23,8 @@ class HomeFragment : Fragment() {
 
         model.getLatestArticles()
         model.getLatestPractices()
+        model.getLatestMeditations()
+        model.getLatestPodcasts()
 
         context?.let {
             model.articles.observe(this, Observer { articles ->
@@ -30,6 +33,10 @@ class HomeFragment : Fragment() {
 
             model.practices.observe(this, Observer { practices ->
                 NFDTextAdapter.setupAdapterAndOnClickListener(practices.take(4), home_practices_list_view, context, "practice")
+            })
+
+            model.meditations.observe(this, Observer { meditations ->
+                NFDAudioAdapter.setupAdapterAndOnClickListener(meditations.take(4), home_practices_list_view, context, "practice")
             })
         }
 

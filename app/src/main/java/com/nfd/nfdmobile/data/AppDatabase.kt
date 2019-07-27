@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nfd.nfdmobile.utilities.DATABASE_NAME
 
-@Database(entities = [NFDText::class], version = 1)
+@Database(entities = [NFDText::class, NFDAudio::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun nfdTextDao(): NFDTextDao
+    abstract fun nfdAudioDao(): NFDAudioDao
 
     companion object {
         // For Singleton instantiation

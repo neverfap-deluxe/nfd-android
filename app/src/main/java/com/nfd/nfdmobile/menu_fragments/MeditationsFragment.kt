@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.nfd.nfdmobile.R
+import com.nfd.nfdmobile.adapters.NFDAudioAdapter
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_meditation.*
@@ -19,11 +20,12 @@ class MeditationsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_practice, container, false)
         val context = context
-//        model.getLatestMeditations()
+
+        model.getLatestMeditations()
 
         context?.let {
             model.meditations.observe(this, Observer { meditations ->
-                NFDTextAdapter.setupAdapterAndOnClickListener(meditations, fragment_meditations_list_view, context, "article")
+                NFDAudioAdapter.setupAdapterAndOnClickListener(meditations, fragment_meditations_list_view, context, "article")
             })
         }
 

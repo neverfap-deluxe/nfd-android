@@ -14,7 +14,6 @@ import android.view.Menu
 
 
 class MainActivity : AppCompatActivity() {
-//    lateinit var textMessage: TextView
     private val model: MainViewModel by viewModel()
 
     private val homeFragment = HomeFragment.newInstance()
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_refresh -> {
             model.getLatestArticles()
@@ -66,41 +64,25 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-//                textMessage.setText(R.string.title_home)
-
                 openFragment(homeFragment)
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_articles -> {
-//                textMessage.setText(R.string.title_articles)
-
                 openFragment(articlesFragment)
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_practices -> {
-//                textMessage.setText(R.string.title_practices)
-
                 openFragment(practicesFragment)
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_meditations -> {
-//                textMessage.setText(R.string.title_practices)
-
                 openFragment(meditationsFragment)
 
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_podcasts -> {
-//                textMessage.setText(R.string.title_practices)
-
-                openFragment(podcastsFragment)
-
-                return@OnNavigationItemSelectedListener true
-            }
-
         }
         false
     }

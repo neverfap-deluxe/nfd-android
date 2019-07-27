@@ -8,13 +8,12 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import com.nfd.nfdmobile.R
-import com.nfd.nfdmobile.data.NFDText
-import com.nfd.nfdmobile.NFDTextActivity
+import com.nfd.nfdmobile.NFDAudioActivity
 import com.nfd.nfdmobile.data.NFDAudio
 
-class NFDTextAdapter(
+class NFDAudioAdapter(
     private val context: Context,
-    private val retrievedList: List<NFDText>
+    private val retrievedList: List<NFDAudio>
     ) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -39,10 +38,10 @@ class NFDTextAdapter(
             holder = convertView.tag as ViewHolder
         }
 
-        val nfdTextItem = getItem(position) as NFDText
+        val nfdAudioItem = getItem(position) as NFDAudio
 
-        holder.titleTextView.text = nfdTextItem.title
-        holder.dateTextView.text = nfdTextItem.date
+        holder.titleTextView.text = nfdAudioItem.title
+        holder.dateTextView.text = nfdAudioItem.date
 
         return view
     }
@@ -65,27 +64,24 @@ class NFDTextAdapter(
     }
 
     companion object {
-        fun setupAdapterAndOnClickListener(
-            retrievedList: List<NFDText>,
-            view: ListView,
-            context: Context,
-            type: String
-        ) {
-            // NOTE: Populates Text View
-            val adapter = NFDTextAdapter(context, retrievedList)
-            view.adapter = adapter
+            fun setupAdapterAndOnClickListener(
+                retrievedList: List<NFDAudio>,
+                view: ListView,
+                context: Context,
+                type: String
+            ) {
+                // NOTE: Populates Audio View
+                val adapter = NFDAudioAdapter(context, retrievedList)
+                view.adapter = adapter
 
-//            val lp = view.layoutParams
-//            lp.height = retrievedList.size * 300
-//            view.layoutParams = lp
-
-            // NOTE: Populates Text OnClick
+            // NOTE: Populates Audio OnClick
             view.setOnItemClickListener { _, _, position, _ ->
-                val selectedTextItem = retrievedList[position]
-                val textItemIntent = NFDTextActivity.newIntent(context, selectedTextItem) // type
+                val selectedAudioItem = retrievedList[position]
+                val textItemIntent = NFDAudioActivity.newIntent(context, selectedAudioItem) // type
 
                 context.startActivity(textItemIntent)
             }
         }
+
     }
 }

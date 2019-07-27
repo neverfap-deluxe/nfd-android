@@ -5,13 +5,10 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.HtmlCompat
 import com.google.android.exoplayer2.ui.PlayerView
-import com.nfd.nfdmobile.R
-import com.nfd.nfdmobile.data.NFDText
+import com.nfd.nfdmobile.data.NFDAudio
 import com.nfd.nfdmobile.utilities.MediaPlayerImpl
 import kotlinx.android.synthetic.main.activity_audio.*
-
 import kotlinx.android.synthetic.main.activity_text.*
 
 class NFDAudioActivity : AppCompatActivity() {
@@ -23,7 +20,7 @@ class NFDAudioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // NOTE so here it needs to check the type, it it exists then set a different view.
-        setContentView(R.layout.activity_text)
+        setContentView(R.layout.activity_audio)
         setSupportActionBar(findViewById(R.id.activity_toolbar))
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -34,10 +31,10 @@ class NFDAudioActivity : AppCompatActivity() {
 //        val nfdType = intent.extras?.getString(EXTRA_NFD_TYPE)
 
         if (content !== null && mp3Url !== null) {
-            activity_text_view_title.text = title
-            activity_text_view_date.text = date
-            activity_text_view_content.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            
+            activity_audio_view_title.text = title
+            activity_audio_view_date.text = date
+//            activity_audio_view_content.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
             videoView.player = mediaPlayer.getPlayerImpl(this)
             mediaPlayer.play(mp3Url)
         }
@@ -73,7 +70,7 @@ class NFDAudioActivity : AppCompatActivity() {
         const val EXTRA_MP3_URL = "mp3Url"
 //        const val EXTRA_NFD_TYPE = "nfd_type"
 
-        fun newIntent(context: Context, text: NFDText): Intent { // textType: String
+        fun newIntent(context: Context, text: NFDAudio): Intent { // textType: String
             val detailIntent = Intent(context, NFDAudioActivity::class.java)
 
             detailIntent.putExtra(EXTRA_TITLE, text.title)

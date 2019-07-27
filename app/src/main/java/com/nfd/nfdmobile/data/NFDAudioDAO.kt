@@ -5,8 +5,8 @@ import androidx.room.*
 @Dao
 interface NFDAudioDao {
     @Insert
-    fun insert(vararg texts: NFDText)
+    fun insert(vararg audios: NFDAudio)
 
-    @Query("SELECT * FROM texts WHERE type = :type")
-    fun getAudiosByType(type: String?): List<NFDText>
+    @Query("SELECT * FROM audios WHERE type = :type")
+    fun getAudiosByType(type: String?): List<NFDAudio>
 }
