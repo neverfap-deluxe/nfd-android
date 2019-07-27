@@ -49,13 +49,14 @@
                     android:layout_width="match_parent"
 					android:layout_height="350dp"
 
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
 
                     android:divider="@android:color/transparent"
                     android:dividerHeight="10dp"
 
                     tools:listitem="@layout/text_item"
-                    tools:itemCount="5"
+                    tools:itemCount="2"
+
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@id/home_articles_title"
@@ -81,18 +82,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
 
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
 
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10dp"
 
                 tools:listitem="@layout/text_item"
-                tools:itemCount="5"
+                tools:itemCount="2"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_practices_title" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+		<TextView
+				android:id="@+id/home_meditations_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/activity_vertical_margin"
+				android:layout_marginBottom="32dp"
+
+				android:text="Latest Meditations"
+				android:textSize="20sp"
+
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/home_practices_list_view"/>
+
+		<ListView
+				android:id="@+id/home_meditations_list_view"
+				android:layout_width="match_parent"
+				android:layout_height="350dp"
+
+				android:layout_marginTop="16dp"
+
+				android:divider="@android:color/transparent"
+				android:dividerHeight="10dp"
+
+				tools:listitem="@layout/text_item"
+				tools:itemCount="2"
+
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/home_meditations_title" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

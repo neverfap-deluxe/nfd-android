@@ -10,6 +10,7 @@ import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.adapters.NFDAudioAdapter
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
 import com.nfd.nfdmobile.viewmodels.MainViewModel
+import kotlinx.android.synthetic.main.fragment_article.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,8 +37,9 @@ class HomeFragment : Fragment() {
             })
 
             model.meditations.observe(this, Observer { meditations ->
-                NFDAudioAdapter.setupAdapterAndOnClickListener(meditations.take(4), home_practices_list_view, context, "practice")
+                NFDAudioAdapter.setupAdapterAndOnClickListener(meditations.take(4), home_meditations_list_view, context, "meditation")
             })
+
         }
 
         return view

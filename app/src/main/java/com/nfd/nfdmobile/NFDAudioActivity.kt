@@ -34,6 +34,7 @@ class NFDAudioActivity : AppCompatActivity() {
             activity_audio_view_title.text = title
             activity_audio_view_date.text = date
 //            activity_audio_view_content.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            videoView = nfd_audio_mp3_view
 
             videoView.player = mediaPlayer.getPlayerImpl(this)
             mediaPlayer.play(mp3Url)

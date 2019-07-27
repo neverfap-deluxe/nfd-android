@@ -10,6 +10,7 @@ import com.nfd.nfdmobile.services.ContentAPIService
 import com.nfd.nfdmobile.services.NFDAudioResponse
 import com.nfd.nfdmobile.services.NFDTextResponse
 import kotlinx.coroutines.*
+import java.io.File
 import kotlin.coroutines.CoroutineContext
 
 // https://proandroiddev.com/oversimplified-network-call-using-retrofit-livedata-kotlin-coroutines-and-dsl-512d08eadc16
@@ -138,7 +139,6 @@ class MainViewModel(val context: Context) : ViewModel() {
         }
         return newList as MutableList<NFDAudio>
     }
-
 
     fun cancelRequests() = coroutineContext.cancel()
 }

@@ -11,6 +11,7 @@ import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.nfd.nfdmobile.R
@@ -29,10 +30,10 @@ class MediaPlayerImpl : MediaPlayer {
 
 
     override fun play(url: String) {
-
+        val bandwidthMeter = DefaultBandwidthMeter();
         val userAgent = Util.getUserAgent(context, context.getString(R.string.app_name))
 
-        val mediaSource = ExtractorMediaSource.Factory(DefaultDataSourceFactory(context, userAgent))
+        val mediaSource = ExtractorMediaSource.Factory(DefaultDataSourceFactory(context, userAgent, bandwidthMeter))
             .setExtractorsFactory(DefaultExtractorsFactory())
             .createMediaSource(Uri.parse(url))
 

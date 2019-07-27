@@ -17,14 +17,14 @@ class PodcastsFragment : Fragment() {
     private val model : MainViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_practice, container, false)
+        val view = inflater.inflate(R.layout.fragment_podcast, container, false)
         val context = context
 
         model.getLatestPodcasts()
 
         context?.let {
             model.podcasts.observe(this, Observer { podcasts ->
-                NFDAudioAdapter.setupAdapterAndOnClickListener(podcasts, fragment_podcasts_list_view, context, "article")
+                NFDAudioAdapter.setupAdapterAndOnClickListener(podcasts, fragment_podcasts_list_view, context, "podcast")
             })
         }
 
