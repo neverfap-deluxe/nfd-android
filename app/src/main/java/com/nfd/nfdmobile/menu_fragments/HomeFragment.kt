@@ -39,7 +39,6 @@ class HomeFragment : Fragment() {
             model.meditations.observe(this, Observer { meditations ->
                 NFDAudioAdapter.setupAdapterAndOnClickListener(meditations.take(4), home_meditations_list_view, context, "meditation")
             })
-
         }
 
         return view

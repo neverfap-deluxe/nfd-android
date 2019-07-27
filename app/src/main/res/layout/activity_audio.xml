@@ -9,26 +9,27 @@
             android:layout_height="match_parent"
             tools:context=".NFDAudioActivity">
 
-        <TextView
-                android:id="@+id/activity_audio_view_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <!--<TextView-->
+                <!--android:id="@+id/activity_audio_view_title"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
 
-                tools:text="How To Overcome Severe Crushing Porn Addiction"
+                <!--tools:text="How To Overcome Severe Crushing Porn Addiction"-->
 
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:textSize="30sp"/>
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--android:textSize="30sp"/>-->
 
-        <TextView
-                android:id="@+id/activity_audio_view_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <!--<TextView-->
+                <!--android:id="@+id/activity_audio_view_date"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
 
-                tools:text="03/04/19"
+                <!--tools:text="03/04/19"-->
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activity_audio_view_title"/>
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@id/activity_audio_view_title"/>-->
 
         <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/nfd_audio_mp3_view"
@@ -36,10 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                app:default_artwork="@drawable/ic_rss_feed_black_24dp"
+                app:use_artwork="true"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/activity_audio_view_title" />
+                app:layout_constraintTop_toTopOf="parent" />
+    <!--app:layout_constraintTop_toTopOf="@id/activity_audio_view_title" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
