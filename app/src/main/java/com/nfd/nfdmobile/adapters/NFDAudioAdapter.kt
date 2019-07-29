@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.NFDAudioActivity
 import com.nfd.nfdmobile.data.NFDAudio
+import com.nfd.nfdmobile.utilities.Helpers
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 
 class NFDAudioAdapter(
@@ -77,10 +79,15 @@ class NFDAudioAdapter(
 
             // NOTE: Populates Audio OnClick
             view.setOnItemClickListener { _, _, position, _ ->
-                val selectedAudioItem = retrievedList[position]
-                val textItemIntent = NFDAudioActivity.newIntent(context, selectedAudioItem) // type
+                if (Helpers.isNetworkAvailable(context!!)) {
+                    val selectedAudioItem = retrievedList[position]
+                    val textItemIntent = NFDAudioActivity.newIntent(context, selectedAudioItem) // type
 
-                context.startActivity(textItemIntent)
+                    context.startActivity(textItemIntent)
+                } else {
+                    val toast = Toast.makeText(context, "You must be connected to the internet!", Toast.LENGTH_SHORT)
+                    toast.show()
+                }
             }
         }
 

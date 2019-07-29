@@ -14,6 +14,7 @@ import android.net.Uri
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
+import com.nfd.nfdmobile.utilities.Helpers
 import kotlinx.android.synthetic.main.custom_toast.*
 import kotlinx.android.synthetic.main.fragment_meditation.*
 
@@ -52,10 +53,18 @@ class MainActivity : AppCompatActivity() {
 //            progressBar.visibility = View.VISIBLE
 //            progressBar.visibility = View.GONE
 
-            model.getLatestArticles()
-            model.getLatestPractices()
-            model.getLatestMeditations()
-            model.getLatestPodcasts()
+            if (Helpers.isNetworkAvailable(this)) {
+                model.getLatestArticles()
+                model.getLatestPractices()
+                model.getLatestMeditations()
+                model.getLatestPodcasts()
+
+                val toast = Toast.makeText(applicationContext, "Refreshed!", Toast.LENGTH_SHORT)
+                toast.show()
+            } else {
+                val toast = Toast.makeText(applicationContext, "You must be connected to the internet!", Toast.LENGTH_SHORT)
+                toast.show()
+            }
 
 //            val inflater = layoutInflater
 //            val container: ViewGroup = findViewById(R.id.custom_toast_container)
@@ -70,9 +79,6 @@ class MainActivity : AppCompatActivity() {
 //                    show()
 //                }
 //            }
-
-            val toast = Toast.makeText(applicationContext, "Refreshed!", Toast.LENGTH_SHORT)
-            toast.show()
 
             true
         }
