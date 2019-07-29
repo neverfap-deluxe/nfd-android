@@ -5,45 +5,61 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
 
+            android:background="#000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".NFDAudioActivity">
 
-        <!--<TextView-->
-                <!--android:id="@+id/activity_audio_view_title"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-
-                <!--tools:text="How To Overcome Severe Crushing Porn Addiction"-->
-
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--android:textSize="30sp"/>-->
-
-        <!--<TextView-->
-                <!--android:id="@+id/activity_audio_view_date"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-
-                <!--tools:text="03/04/19"-->
-
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@id/activity_audio_view_title"/>-->
-
-        <com.google.android.exoplayer2.ui.PlayerView
-                android:id="@+id/nfd_audio_mp3_view"
-
+        <TextView
+                android:id="@+id/activity_audio_view_title"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:layout_marginTop="36dp"
 
-                app:default_artwork="@drawable/ic_nfd_logo_out"
-                app:use_artwork="true"
+                android:textColor="#fff"
+                tools:text="How To Overcome Severe Crushing Porn Addiction"
 
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="30sp"
+                android:padding="24dp"
+                android:lineSpacingExtra="6sp"
+        />
+
+        <TextView
+                android:id="@+id/activity_audio_view_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+
+                android:paddingTop="12dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+
+                android:textColor="#fff"
+                android:textSize="18dp"
+                tools:text="03/04/19"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_audio_view_title"/>
+
+    <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/nfd_audio_mp3_view"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            app:default_artwork="@drawable/ic_logo__out"
+            app:use_artwork="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="90dp"/>
+    <!--app:layout_constraintTop_toBottomOf="@id/activity_audio_view_date"/>-->
     <!--app:layout_constraintTop_toTopOf="@id/activity_audio_view_title" />-->
 
 

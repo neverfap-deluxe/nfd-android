@@ -39,7 +39,7 @@ class MediaPlayerImpl : MediaPlayer {
 
         exoPlayer.prepare(mediaSource)
 
-        exoPlayer.playWhenReady = true
+//        exoPlayer.playWhenReady = true
     }
 
     override fun getPlayerImpl(context: Context): ExoPlayer {

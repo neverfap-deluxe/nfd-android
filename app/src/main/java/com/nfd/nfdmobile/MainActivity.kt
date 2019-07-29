@@ -1,7 +1,6 @@
 package com.nfd.nfdmobile
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,9 +9,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import com.nfd.nfdmobile.fragments.*
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.view.Menu
 import android.content.Intent
 import android.net.Uri
+import android.view.*
+import android.widget.TextView
+import android.widget.Toast
+import kotlinx.android.synthetic.main.custom_toast.*
+import kotlinx.android.synthetic.main.fragment_meditation.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +56,23 @@ class MainActivity : AppCompatActivity() {
             model.getLatestPractices()
             model.getLatestMeditations()
             model.getLatestPodcasts()
+
+//            val inflater = layoutInflater
+//            val container: ViewGroup = findViewById(R.id.custom_toast_container)
+//            container?.let {
+//                val layout: ViewGroup = inflater.inflate(R.layout.custom_toast, container) as ViewGroup
+//                val text: TextView = layout.findViewById(R.id.custom_toast_text)
+//                text.text = "This is a custom toast"
+//                with (Toast(applicationContext)) {
+//                    setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+//                    duration = Toast.LENGTH_LONG
+//                    view = layout
+//                    show()
+//                }
+//            }
+
+            val toast = Toast.makeText(applicationContext, "Refreshed!", Toast.LENGTH_SHORT)
+            toast.show()
 
             true
         }
@@ -104,6 +124,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
+    }
+
+    fun onClickWebsiteLink(v: View) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://neverfapdeluxe.com/"))
+        startActivity(browserIntent)
     }
 
     private fun openFragment(fragment: Fragment) {

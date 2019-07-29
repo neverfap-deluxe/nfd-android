@@ -10,8 +10,11 @@ import androidx.lifecycle.Observer
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.adapters.NFDAudioAdapter
 import com.nfd.nfdmobile.adapters.NFDTextAdapter
+import com.nfd.nfdmobile.utilities.Helpers
 import com.nfd.nfdmobile.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_meditation.*
+import kotlinx.android.synthetic.main.fragment_meditation.progressBar
+import kotlinx.android.synthetic.main.fragment_practice.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -23,11 +26,19 @@ class MeditationsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_meditation, container, false)
         val context = context
 
+        if (Helpers.isNetworkAvailable(context!!)) {
+            progressBar?.visibility = View.VISIBLE
+        }
+
         model.getLatestMeditations()
 
         context?.let {
             model.meditations.observe(this, Observer { meditations ->
                 NFDAudioAdapter.setupAdapterAndOnClickListener(meditations, fragment_meditations_list_view, context, "meditation")
+                model.meditationsLoadedState.postValue(true)
+            })
+            model.meditationsLoadedState.observe(this, Observer { stateBool ->
+                progressBar?.visibility = View.GONE
             })
         }
 

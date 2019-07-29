@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.nfd.nfdmobile.R
 import com.nfd.nfdmobile.NFDAudioActivity
 import com.nfd.nfdmobile.data.NFDAudio
+import com.nfd.nfdmobile.viewmodels.MainViewModel
 
 class NFDAudioAdapter(
     private val context: Context,

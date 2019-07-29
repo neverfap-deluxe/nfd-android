@@ -31,8 +31,8 @@ class NFDAudioActivity : AppCompatActivity() {
 //        val nfdType = intent.extras?.getString(EXTRA_NFD_TYPE)
 
         if (content !== null && mp3Url !== null) {
-//            activity_audio_view_title.text = title
-//            activity_audio_view_date.text = date
+            activity_audio_view_title.text = title
+            activity_audio_view_date.text = date
 //            activity_audio_view_content.text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
             videoView = nfd_audio_mp3_view
 

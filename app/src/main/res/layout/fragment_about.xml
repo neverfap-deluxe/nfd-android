@@ -4,14 +4,16 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
 
-            android:layout_margin="@dimen/view_layout_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
             tools:context=".MainActivity">
 
     <LinearLayout
+            android:layout_margin="@dimen/view_layout_margin"
             android:orientation="vertical"
+
+            android:layout_marginBottom="40dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -29,15 +31,93 @@
         />
 
         <TextView
-                android:id="@+id/fragment_about_text"
+                android:id="@+id/fragment_about_text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                android:layout_marginBottom="20dp"
                 android:textSize="20sp"
                 android:lineSpacingExtra="2sp"
 
-                android:text="NeverFap Deluxe is a porn addiciton recovery platform"
+                android:text="NeverFap Deluxe is a porn addiciton recovery platform created by the fabulous Julius Reade!"
         />
+
+        <TextView
+                android:id="@+id/fragment_about_text_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+
+                android:text="This mobile app is essentially a compilation of the articles, practices, meditations and podcasts available on the NeverFap Deluxe website."
+        />
+
+        <TextView
+                android:id="@+id/fragment_about_text_2_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+                android:onClick="onClickWebsiteLink"
+
+                android:text="https://neverfapdeluxe.com/"
+                android:textColor="#00FFFF"/>
+
+
+        <TextView
+                android:id="@+id/fragment_about_text_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+
+                android:text="Certainly I recommend checking out the website since it contains sooooo much more content, especially the homepage, summary and guide which are indispensable knowledge."
+        />
+
+        <TextView
+                android:id="@+id/fragment_about_text_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+
+                android:text="Regardless, I wish you best of luck with your porn recovery journey!"
+        />
+
+        <TextView
+                android:id="@+id/fragment_about_text_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+
+                android:text="Sincerely,"
+        />
+
+        <TextView
+                android:id="@+id/fragment_about_text_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:textSize="20sp"
+                android:lineSpacingExtra="2sp"
+
+                android:text="Daddy Reade"
+        />
+
+
+
 
     </LinearLayout>
 

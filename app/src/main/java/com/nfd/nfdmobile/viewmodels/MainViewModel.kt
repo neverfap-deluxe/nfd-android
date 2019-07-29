@@ -30,6 +30,11 @@ class MainViewModel(val context: Context) : ViewModel() {
     val meditations = MutableLiveData<MutableList<NFDAudio>>()
     val podcasts = MutableLiveData<MutableList<NFDAudio>>()
 
+    val articlesLoadedState = MutableLiveData<Boolean>()
+    val practicesLoadedState = MutableLiveData<Boolean>()
+    val meditationsLoadedState = MutableLiveData<Boolean>()
+    val podcastsLoadedState = MutableLiveData<Boolean>()
+
     fun getLatestArticles() {
         val type = "article"
         scope.launch {
