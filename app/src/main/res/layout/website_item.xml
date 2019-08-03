@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:background="@drawable/text_item_style"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" android:padding="12dp">
+
+    <TextView
+            android:id="@+id/website_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            tools:text="This Is An Article Name"
+
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="18sp"/>
+
+    <TextView
+            android:id="@+id/website_item_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            tools:text="@tools:sample/date/ddmmyy"
+
+            app:layout_constraintTop_toBottomOf="@id/website_item_title"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

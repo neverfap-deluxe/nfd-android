@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.ui.PlayerView
 import com.nfd.nfdmobile.data.NFDAudio
@@ -18,6 +19,9 @@ class NFDAudioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Keeps Screen on (I assume so, not tested)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         // NOTE so here it needs to check the type, it it exists then set a different view.
         setContentView(R.layout.activity_audio)

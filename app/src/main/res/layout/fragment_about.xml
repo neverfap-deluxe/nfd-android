@@ -13,7 +13,6 @@
             android:layout_margin="@dimen/view_layout_margin"
             android:orientation="vertical"
 
-            android:layout_marginBottom="40dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -109,16 +108,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="60dp"
                 android:textSize="20sp"
                 android:lineSpacingExtra="2sp"
 
                 android:text="Daddy Reade"
         />
 
-
-
-
+jj
     </LinearLayout>
 
 </ScrollView>

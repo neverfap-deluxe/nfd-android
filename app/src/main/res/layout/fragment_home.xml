@@ -15,22 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--<TextView-->
-                <!--android:id="@+id/app_title"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-
-                <!--android:text="NeverFap Deluxe"-->
-                <!--android:textSize="50sp"-->
-                <!--android:paddingTop="24dp"-->
-                <!--android:paddingBottom="24dp"-->
-                <!--android:lineSpacingExtra="6sp"-->
-                <!--android:gravity="center"-->
-
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"/>-->
-
 		<ProgressBar
 				android:id="@+id/progressBar"
 				android:layout_width="fill_parent"
@@ -39,9 +23,40 @@
 
 				style="?android:attr/progressBarStyleHorizontal"
 
-				app:layout_constraintTop_toBottomOf="@id/home_articles_title"
+				app:layout_constraintTop_toBottomOf="@id/home_urls_title"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
+		/>
+
+		<TextView
+				android:id="@+id/home_urls_title"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_marginTop="@dimen/activity_vertical_margin"
+
+				android:text="Introduction (online only)"
+				android:textSize="20sp"
+				android:textColor="#fff"
+				android:background="@drawable/home_sub_title_style"
+
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"/>
+
+		<ListView
+				android:id="@+id/home_urls_list_view"
+				android:layout_width="match_parent"
+				android:layout_height="350dp"
+
+				android:divider="@android:color/transparent"
+				android:dividerHeight="10dp"
+
+				tools:listitem="@layout/text_item"
+				tools:itemCount="2"
+
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/home_urls_title"
+
 		/>
 
 		<TextView
@@ -56,7 +71,8 @@
 				android:background="@drawable/home_sub_title_style"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+				app:layout_constraintTop_toBottomOf="@id/home_urls_list_view"
+		/>
 
         <ListView
                     android:id="@+id/home_articles_list_view"
@@ -138,3 +154,21 @@
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
+
+
+
+		<!--<TextView-->
+		<!--android:id="@+id/app_title"-->
+		<!--android:layout_width="wrap_content"-->
+		<!--android:layout_height="wrap_content"-->
+
+		<!--android:text="NeverFap Deluxe"-->
+		<!--android:textSize="50sp"-->
+		<!--android:paddingTop="24dp"-->
+		<!--android:paddingBottom="24dp"-->
+		<!--android:lineSpacingExtra="6sp"-->
+		<!--android:gravity="center"-->
+
+		<!--app:layout_constraintEnd_toEndOf="parent"-->
+		<!--app:layout_constraintStart_toStartOf="parent"-->
+		<!--app:layout_constraintTop_toTopOf="parent"/>-->

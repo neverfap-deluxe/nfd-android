@@ -34,6 +34,20 @@ class MainViewModel(val context: Context) : ViewModel() {
     val practicesLoadedState = MutableLiveData<Boolean>()
     val meditationsLoadedState = MutableLiveData<Boolean>()
     val podcastsLoadedState = MutableLiveData<Boolean>()
+    val urlListLoadedState = MutableLiveData<Boolean>()
+
+    val urlList = MutableLiveData<MutableList<NFDWebsite>>()
+
+    fun populateUrlList() {
+        urlList.postValue(
+            mutableListOf(
+                NFDWebsite(0, "Homepage", "https://neverfapdeluxe.com/"),
+                NFDWebsite(0, "Summary", "https://neverfapdeluxe.com/summary"),
+                NFDWebsite(0, "Guide", "https://neverfapdeluxe.com/guide"),
+                NFDWebsite(0, "About", "https://neverfapdeluxe.com/about")
+            )
+        )
+    }
 
     fun getLatestArticles() {
         val type = "article"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!--android:layout_margin="@dimen/view_layout_margin"-->
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:gravity="right"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!--<ProgressBar-->
+            <!--android:id="@+id/progressBar"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:indeterminateOnly="true"-->
+
+            <!--style="?android:attr/progressBarStyleHorizontal"-->
+
+            <!--app:layout_constraintTop_toBottomOf="@id/home_articles_title"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--/>-->
+
+    <WebView
+            android:id="@+id/webview_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+</LinearLayout>
